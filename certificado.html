@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Certificado Oficial - KRONOS MX</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#020204;display:grid;place-items:center;min-height:100vh;padding:20px;font-family:'Inter'}
+.paper{width:100%;max-width:800px;background:linear-gradient(180deg,#14141a,#0a0a0f);border:2px solid #d4af37;border-radius:20px;padding:40px;position:relative;box-shadow:0 0 80px #d4af3722}
+.paper:before{content:'';position:absolute;top:15px;left:15px;right:15px;bottom:15px;border:1px solid #d4af3722;border-radius:14px;pointer-events:none}
+h1{font-family:'Orbitron';color:#d4af37;text-align:center;font-size:28px;letter-spacing:3px}
+h2{text-align:center;color:#fff;font-size:18px;margin:10px 0;letter-spacing:1px}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#d4af37,transparent);margin:20px 0}
+.row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.box{flex:1;min-width:200px;background:#00000066;border:1px solid #ffffff11;padding:15px;border-radius:12px}
+.label{color:#d4af37;font-size:10px;letter-spacing:2px}
+.value{color:#fff;font-family:'Orbitron';font-size:18px;margin-top:5px;word-break:break-all}
+.qrwrap{display:grid;place-items:center;margin:20px 0}
+#qrcode{background:#fff;padding:12px;border-radius:12px}
+.footer{text-align:center;color:#666;font-size:10px;margin-top:20px;letter-spacing:1px}
+.btn{background:linear-gradient(#e8c765,#d4af37);color:#000;padding:12px 20px;border-radius:8px;font-weight:900;text-decoration:none;display:inline-block;margin:10px 5px;cursor:pointer;border:none}
+@media print{.btn{display:none}}
+</style></head><body>
+<div class="paper" id="cert">
+<h1>KRONOS MX</h1>
+<h2>CERTIFICADO OFICIAL DE CONFIANZA DIGITAL</h2>
+<div class="divider"></div>
+<div class="row">
+<div class="box"><div class="label">GENESIS BLOCK</div><div class="value">25692765</div><div style="color:#888;font-size:11px;margin-top:5px">Ethereum Mainnet</div></div>
+<div class="box"><div class="label">ESTADO</div><div class="value" style="color:#4f4">OPERATIVO ● 99.998%</div><div style="color:#888;font-size:11px;margin-top:5px">Verificado por Guardian Soberano</div></div>
+</div>
+<br>
+<div class="row">
+<div class="box"><div class="label">PROTOCOLO</div><div class="value" style="font-size:14px">KRONOS-2099 / Post-Cuántico</div></div>
+<div class="box"><div class="label">SEDE SOBERANA</div><div class="value" style="font-size:14px">Toluca, Estado de México - HECHO EN MÉXICO</div></div>
+</div>
+<div class="qrwrap"><div id="qrcode"></div><div style="color:#d4af37;font-size:11px;margin-top:10px;font-family:'Orbitron'">verify.kronos.mx/25692765</div></div>
+<div class="divider"></div>
+<div class="row">
+<div class="box"><div class="label">HASH ON-CHAIN</div><div class="value" style="font-size:12px">0x9f3a7c2e8b4d1f6a...a8e2d9f1</div></div>
+<div class="box"><div class="label">VIGENCIA</div><div class="value" style="font-size:14px">Hasta 31/12/2099</div></div>
+</div>
+<div class="footer">KRONOS MX • Infraestructura Nacional de Confianza Digital • Sistema Nacional Desde 2099<br>Este documento es verificable criptográficamente en Ethereum Bloque 25692765. Documento soberano.</div>
+<div style="text-align:center;margin-top:15px"><button class="btn" onclick="window.print()">🖨️ IMPRIMIR / GUARDAR PDF</button><a class="btn" href="https://etherscan.io/block/25692765" target="_blank" style="background:#000;color:#d4af37;border:1px solid #d4af37">🔗 VER EN ETHERSCAN</a><br><a href="index.html" style="color:#555;font-size:12px;text-decoration:none">← Volver a KRONOS MX CORE</a></div>
+</div>
+<script>
+new QRCode(document.getElementById("qrcode"), {text:"https://kronosproyect.github.io/kronos-mx-core/ | BLOQUE:25692765 | HECHO EN MEXICO | TOLUCA | HASTA 2099", width:140, height:140});
+</script>
+</body>
+</html>
