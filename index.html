@@ -1,61 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KRONOS MX CORE | Infraestructura Nacional 2099</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KRONOS MX - Infraestructura Nacional de Confianza Digital hasta 2099</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+:root{--gold:#d4af37;--gold2:#f5d76e;--bg:#050507;--card:#111114;--green:#00ff88}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#050508;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;border-bottom:1px solid #d4af3755;background:#000}
-.logo{font-family:'Orbitron';font-weight:900;letter-spacing:3px;color:#d4af37;font-size:22px}
-.navlinks{color:#888;display:flex;gap:25px;font-size:13px;letter-spacing:1px}
-.navlinks b{color:#d4af37}
-.hero{text-align:center;padding:80px 20px;background:radial-gradient(circle at 50% 0%, #1a1a20 0%, #050508 70%)}
-.hero h1{font-family:'Orbitron';font-size:clamp(36px,8vw,84px);background:linear-gradient(#f5e6a0,#d4af37,#8a6e1d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;letter-spacing:2px}
-.hero h2{font-size:clamp(18px,3vw,28px);margin-top:15px;font-weight:600}
-.sub{color:#d4af37;margin:12px 0;letter-spacing:2px}
-.desc{color:#888;max-width:700px;margin:10px auto 30px}
-.pills{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin:30px 0}
-.pill{background:linear-gradient(180deg,#2a2a30,#15151a);border:1px solid #d4af3766;border-radius:12px;padding:12px 18px;text-align:left;min-width:240px}
-.pill b{color:#d4af37}
-.btns{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
-.btn1{background:linear-gradient(#e8c765,#d4af37);color:#000;padding:14px 28px;border-radius:8px;font-weight:900;text-decoration:none}
-.btn2{border:1px solid #d4af37;color:#d4af37;padding:14px 28px;border-radius:8px;text-decoration:none}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;padding:40px;max-width:1200px;margin:0 auto}
-.card{background:linear-gradient(180deg,#18181f,#0e0e12);border:1px solid #d4af3733;border-radius:16px;padding:22px;position:relative}
-.card:before{content:'';position:absolute;top:0;left:0;width:40px;height:40px;border-top:2px solid #d4af37;border-left:2px solid #d4af37;border-radius:16px 0 0 0}
-.card h3{color:#d4af37;font-size:13px;letter-spacing:1px;margin-bottom:8px}
-.big{font-family:'Orbitron';font-size:52px;font-weight:900}
-.footer{border-top:1px solid #222;padding:15px;text-align:center;color:#555;font-size:11px;letter-spacing:1px}
-.qr{width:110px;height:110px;background:#d4af37;margin:10px auto;display:grid;place-items:center;color:#000;font-weight:900;border-radius:8px}
+body{background:var(--bg);color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
+header{position:sticky;top:0;z-index:99;background:rgba(5,5,7,0.9);backdrop-filter:blur(20px);border-bottom:1px solid #d4af3715;padding:14px 6%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Orbitron';font-weight:900;color:var(--gold);letter-spacing:3px;line-height:0.9;font-size:22px}
+.nav a{color:#888;text-decoration:none;margin-left:20px;font-size:11px;letter-spacing:2px}
+.hero{padding:70px 6% 30px;text-align:center;background:radial-gradient(ellipse at center,#d4af3715,transparent 70%)}
+.badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:6px 14px;border-radius:100px;font-size:9px;letter-spacing:3px;margin-bottom:20px}
+h1{font-family:'Orbitron';font-size:clamp(28px,6vw,52px);line-height:1.05;background:linear-gradient(180deg,#fff,#d4af37);-webkit-background-clip:text;-webkit-text-fill-color:transparent;max-width:900px;margin:0 auto}
+.hero p.subtitle{color:#aaa;margin:18px auto 0;max-width:600px;line-height:1.5;font-size:15px}
+.hero p.made{color:var(--gold);letter-spacing:4px;font-size:12px;margin-top:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;padding:20px 6%}
+.card{background:linear-gradient(180deg,var(--card),#08080a);border:1px solid #ffffff0f;border-left:3px solid var(--gold);border-radius:18px;padding:22px;position:relative}
+.card h3{color:var(--gold);font-family:'Orbitron';font-size:12px;letter-spacing:2px;margin-bottom:12px}
+.big{font-family:'Orbitron';font-size:36px;font-weight:900;color:#4a9eff;line-height:1}
+.small{color:#888;font-size:12px;margin-top:6px}
+.qrbox{width:110px;height:110px;background:var(--gold);border-radius:12px;display:grid;place-items:center;color:#000;font-weight:900;font-family:'Orbitron';margin:14px 0}
+.btns{display:flex;gap:12px;justify-content:center;padding:20px 6% 50px;flex-wrap:wrap}
+.btn{padding:14px 22px;border-radius:12px;font-weight:900;font-size:12px;letter-spacing:1px;text-decoration:none;display:inline-block}
+.btn-gold{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#000}
+.btn-black{background:#0e0e10;border:1px solid #ffffff1a;color:#fff}
+.live{color:var(--green);font-size:12px;font-weight:700}
+footer{text-align:center;padding:30px;color:#444;font-size:10px;letter-spacing:1px;border-top:1px solid #ffffff08}
 </style>
 </head>
 <body>
-<nav><div class="logo">KRONOS MX</div><div class="navlinks"><b>INICIO</b><span>INFRAESTRUCTURA</span><span>SEGURIDAD</span><span>DOCUMENTACIÓN</span></div></nav>
+<header><div class="logo">KRONOS<br>MX</div><div class="nav"><a href="#">INICIO</a><a href="#">INFRAESTRUCTURA</a></div></header>
+
 <div class="hero">
-<h1>KRONOS MX CORE</h1>
-<h2>Infraestructura Nacional de Confianza Digital hasta 2099</h2>
-<div class="sub">Hecho en México • Toluca</div>
-<p class="desc">Protocolo soberano de validación y registro en Ethereum. Seguridad post-cuántica. Operación crítica 2099.</p>
-<div class="pills">
-<div class="pill">Genesis Block<br><b>25692765 Ethereum</b></div>
-<div class="pill">Estado: OPERATIVO<br><b style="color:#4f4">● EN LÍNEA • UPTIME 99.998%</b></div>
-<div class="pill">Capa 2:<br><b>KRONOS-L2</b></div>
+<div class="badge">PROTOCOLO SOBERANO ACTIVO • HASTA 2099</div>
+<h1>Infraestructura Nacional de Confianza Digital hasta 2099</h1>
+<p class="made">Hecho en México • Toluca</p>
+<p class="subtitle">Protocolo soberano de validación y registro en Ethereum. Seguridad post-cuántica. Operación crítica 2099. Diseñado para proteger datos nacionales.</p>
 </div>
-<div class="btns">
-<a class="btn1" href="https://etherscan.io/block/25692765" target="_blank">🔗 VERIFICAR EN CADENA</a>
-<a class="btn2"
-href="certificado.htm1"> •
-DESCARGAR CERTIFICADO
-OFICIAL</a>
-</div>
-</div>
+
 <div class="grid">
-<div class="card"><h3>VALIDACIÓN DE BLOQUE</h3><div class="big">25692765</div><p style="color:#888;font-size:12px">Confirmaciones: 12,493,881 • Finalidad: ~4.2s</p></div>
-<div class="card"><h3>RED NACIONAL - 1124 NODOS VALIDADOS</h3><p style="color:#888;font-size:12px">Cobertura: México • 32 entidades • Latencia &lt;12ms</p><br><h3>VERIFICACIÓN QR</h3><div class="qr">QR 25692765</div><p style="font-size:10px;color:#d4af37">verify.kronos.mx/25692765</p></div>
-<div class="card"><h3>SEGURIDAD CUÁNTICA • NIVEL 7</h3><p style="color:#888;font-size:12px">HSM + MPC • Cert. NOM-257-CONFIANZA-2099</p><br><h3>SELLO DE CONFIANZA DIGITAL</h3><ul style="text-align:left;color:#aaa;font-size:12px;line-height:1.8"><li>Registro inmutable en Ethereum Mainnet — Bloque 25692765</li><li>Cumple: Ley Federal de Ciberseguridad 2099</li><li>Hash on-chain: 0x9f3a7c2e...a8e2d9f1</li></ul></div>
+<div class="card"><h3>VALIDACIÓN DE BLOQUE</h3><div class="big">25692765</div><div class="small">Confirmaciones: 12,493,881 • Finalidad: ~4.2s<br>Ethereum Mainnet - Verificado</div></div>
+<div class="card"><h3>ESTADO DE RED</h3><div class="big" style="font-size:18px;color:#fff">OPERATIVO</div><div class="live">● EN LÍNEA • UPTIME 99.998%</div><div class="small" style="margin-top:10px">1124 Nodos validados<br>Cobertura: México • 32 entidades • Latencia &lt;12ms</div></div>
+<div class="card"><h3>VERIFICACIÓN QR</h3><div class="qrbox">QR<br>25692765</div><div class="small" style="color:var(--gold)">verify.kronos.mx/25692765</div></div>
+<div class="card"><h3>SEGURIDAD CUÁNTICA • NIVEL 7</h3><div class="small">HSM + MPC • Cert. NOM-257-CONFIANZA-2099<br>Resistencia cuántica activa<br>Guardian Soberano: Toluca HQ</div></div>
 </div>
-<div class="footer">KRONOS MX • INFRAESTRUCTURA DE CONFIANZA DIGITAL — TOLUCA, ESTADO DE MÉXICO — PROTOCOLO KRONOS-2099 • HECHO EN MÉXICO • 2099 — v2099.2.0 • Soberano • Post-cuántico • Seguro</div>
+
+<div class="btns">
+<a class="btn btn-gold" href="certificado.html">⬇ DESCARGAR CERTIFICADO OFICIAL</a>
+<a class="btn btn-black" href="https://etherscan.io/block/25692765" target="_blank">🔗 VER BLOQUE EN ETHERSCAN</a>
+</div>
+
+<footer>KRONOS MX • Hecho en México - Toluca, Estado de México • Bloque Génesis 25692765 • Infraestructura hasta 2099<br>Sistema verificable on-chain. Propiedad intelectual KRONOS MX.</footer>
 </body>
 </html>
