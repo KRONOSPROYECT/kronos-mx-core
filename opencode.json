@@ -1,0 +1,10 @@
+{
+  "project": "KRONOS MX",
+  "genesis_block": "25692765",
+  "network": "ethereum",
+  "sovereignty": "HECHO EN MEXICO",
+  "hq": "Toluca, Estado de Mexico",
+  "valid_until": "2099",
+  "license": "MIT",
+  "status": "operativo"
+}
