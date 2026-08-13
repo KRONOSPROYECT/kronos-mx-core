@@ -1,73 +1,58 @@
+<!-- PEGA ESTO COMO index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KRONOS EMBASSY | ID: 2608096674952</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KRONOS MX CORE | ID 2608096674952 | QEC [[7,1,3]]</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+:root{--gold:#d4af37;--gold2:#f5d76e;--bg:#050507;--card:#111114;--green:#00ff88}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#050a05;color:#c9ffae;font-family:monospace;padding:16px;min-height:100vh}
-.header{border:1px solid #8aff5c;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-radius:12px;background:#00000088}
-.header h1{font-size:13px;letter-spacing:2px;color:#8aff5c}
-.verde{border:1px solid #8aff5c;padding:6px 12px;border-radius:20px;color:#8aff5c;font-size:10px}
-.hero{display:grid;grid-template-columns:1.5fr .8fr;gap:16px;margin-top:20px}
-.card{border:1px solid #8aff5c55;background:#000000cc;padding:24px;border-radius:16px;box-shadow:0 0 20px #8aff5c22}
-.card h2{color:#aaff88;font-size:36px;line-height:0.9;margin-top:8px}
-.label{font-size:10px;letter-spacing:3px;opacity:.6}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
-.met small{display:block;font-size:9px;opacity:.6;letter-spacing:1px;margin-bottom:4px}
-.met b{color:#8aff5c;font-size:26px;display:block}
-.btn{margin-top:24px;width:100%;padding:18px;background:#8aff5c;color:#000;border:0;border-radius:12px;font-weight:900;letter-spacing:1px;cursor:pointer;font-size:13px;transition:.2s}
-.btn:hover{background:#aaff88;box-shadow:0 0 20px #8aff5c}
-.footer{margin-top:20px;text-align:center;opacity:.4;font-size:9px;letter-spacing:1px}
-@media(max-width:700px){
-  .hero{grid-template-columns:1fr}
-  .card h2{font-size:26px}
-  .metrics{grid-template-columns:1fr}
-  .header h1{font-size:10px}
-}
+body{background:var(--bg);color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
+header{position:sticky;top:0;z-index:99;background:rgba(5,5,7,0.9);backdrop-filter:blur(20px);border-bottom:1px solid #d4af3715;padding:14px 6%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Orbitron';font-weight:900;color:var(--gold);letter-spacing:3px;line-height:0.9;font-size:22px}
+.nav a{color:#888;text-decoration:none;margin-left:20px;font-size:11px;letter-spacing:2px}
+.hero{padding:70px 6% 30px;text-align:center;background:radial-gradient(ellipse at center,#d4af3715,transparent 70%)}
+.badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:6px 14px;border-radius:100px;font-size:9px;letter-spacing:3px;margin-bottom:20px}
+h1{font-family:'Orbitron';font-size:clamp(28px,6vw,52px);line-height:1.05;background:linear-gradient(180deg,#fff,#d4af37);-webkit-background-clip:text;-webkit-text-fill-color:transparent;max-width:900px;margin:0 auto}
+.hero p.subtitle{color:#aaa;margin:18px auto 0;max-width:600px;line-height:1.5;font-size:15px}
+.hero p.made{color:var(--gold);letter-spacing:4px;font-size:12px;margin-top:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;padding:20px 6%}
+.card{background:linear-gradient(180deg,var(--card),#08080a);border:1px solid #ffffff0f;border-left:3px solid var(--gold);border-radius:18px;padding:22px;position:relative}
+.card h3{color:var(--gold);font-family:'Orbitron';font-size:12px;letter-spacing:2px;margin-bottom:12px}
+.big{font-family:'Orbitron';font-size:36px;font-weight:900;color:#4a9eff;line-height:1}
+.small{color:#888;font-size:12px;margin-top:6px}
+.qrbox{width:110px;height:110px;background:var(--gold);border-radius:12px;display:grid;place-items:center;color:#000;font-weight:900;font-family:'Orbitron';margin:14px 0}
+.btns{display:flex;gap:12px;justify-content:center;padding:20px 6% 50px;flex-wrap:wrap}
+.btn{padding:14px 22px;border-radius:12px;font-weight:900;font-size:12px;letter-spacing:1px;text-decoration:none;display:inline-block}
+.btn-gold{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#000}
+.btn-black{background:#0e0e10;border:1px solid #ffffff1a;color:#fff}
+.live{color:var(--green);font-size:12px;font-weight:700}
+footer{text-align:center;padding:30px;color:#444;font-size:10px;letter-spacing:1px;border-top:1px solid #ffffff08;line-height:1.6}
 </style>
 </head>
 <body>
-
-<div class="header">
-  <h1>KRONOS EMBASSY | ID: 2608096674952</h1>
-  <div class="verde">● ESTADO: VERDE OPERATIVO QEC [[7,1,3]] ACTIVO</div>
-</div>
+<header><div class="logo">KRONOS<br>MX CORE</div><div class="nav"><a href="#">ID: 2608096674952</a><a href="#">QEC [[7,1,3]]</a></div></header>
 
 <div class="hero">
-  <!-- IZQUIERDA -->
-  <div class="card">
-    <div class="label">SOBERANA • CUÁNTICA</div>
-    <h2>KRONOS - Nación<br>Cuántica Soberana</h2>
-    <p style="margin-top:12px;opacity:.7;font-size:12px;line-height:1.5">> Protocolo de soberanía digital. Red QEC independiente. Seguridad post-cuántica de nivel máximo.</p>
-    
-    <div class="metrics">
-      <div class="met"><small>QEC STEANE Threshold</small><b>1.42e-6</b><small>pL ≤ 10⁻⁶ • Error: 5.2×10⁻⁷</small></div>
-      <div class="met"><small>NODOS ACTIVOS</small><b>128/128</b><small>Sincronizado • Latencia 3.1ms</small></div>
-      <div class="met"><small>CIUDADANOS</small><b>2,341</b><small>+17 últimas 24h</small></div>
-    </div>
-
-    <button class="btn" onclick="window.open('https://wa.me/5215530806714?text=SOLICITO%20CIUDADANIA%20KRONOS%20ID%202608096674952','_blank')">
-      SOLICITAR CIUDADANÍA CUÁNTICA →
-    </button>
-    <div style="font-size:9px;margin-top:8px;opacity:.5;text-align:center">Bot verificado • Instancia 710722708891 • Toluca HQ</div>
-  </div>
-
-  <!-- DERECHA -->
-  <div class="card" style="text-align:center">
-    <h3 style="font-size:12px;letter-spacing:2px">ACTA FUNDACIONAL PRIVADA<br>KRONOS MX</h3>
-    <div style="margin:20px 0;font-size:48px">🔒</div>
-    <small>Bloque Génesis</small>
-    <b style="font-size:38px;color:#8aff5c;display:block">25692765</b>
-    <small style="margin-top:16px;display:block">Fidelity</small>
-    <b style="font-size:38px;color:#8aff5c;display:block">99.9992%</b>
-    <div style="height:8px;background:#8aff5c;border-radius:10px;margin-top:20px;box-shadow:0 0 10px #8aff5c"></div>
-    <small style="margin-top:12px;display:block;opacity:.5;line-height:1.4">Verificación: Completa<br>Hash: 9f4d...a2b8e1<br>ID: 2608096674952</small>
-  </div>
+<div class="badge">PROTOCOLO PRIVADO SOBERANO ACTIVO • HASTA 2099 • QEC [[7,1,3]]</div>
+<h1>Infraestructura Privada de Confianza Digital hasta 2099</h1>
+<p class="made">Hecho en México • Toluca HQ • Entidad Privada</p>
+<p class="subtitle">Protocolo privado de validación y registro anclado en Ethereum. Seguridad post-cuántica con corrección Steane [[7,1,3]]. Operación privada hasta 2099. Arquitectura soberana privada.</p>
 </div>
 
-<div class="footer">KRONOS EMS // v2.7.3-alpha :: Conectado a red cuántica • Canal cifrado AES-256-Q | TIEMPO CUÁNTICO: 2026 :: SESSION SECURE | TOLUCA HQ - Entidad Privada</div>
+<div class="grid">
+<div class="card"><h3>VALIDACIÓN DE BLOQUE GÉNESIS</h3><div class="big">25692765</div><div class="small">Confirmaciones: 12,493,881 • Finalidad: ~4.2s<br>Ethereum Mainnet - Verificado • ID Privado 2608096674952</div></div>
+<div class="card"><h3>ESTADO DE RED PRIVADA</h3><div class="big" style="font-size:18px;color:#fff">VERDE OPERATIVO</div><div class="live">● QEC [[7,1,3]] ACTIVO • UPTIME 99.998%</div><div class="small" style="margin-top:10px">128/128 Nodos privados validados<br>Latencia 3.1ms • Threshold 1.42e-6</div></div>
+<div class="card"><h3>VERIFICACIÓN QR PRIVADA</h3><div class="qrbox">QR<br>25692765</div><div class="small" style="color:var(--gold)">verify.kronos-mx-core/25692765<br>Fidelity 99.9992%</div></div>
+<div class="card"><h3>SEGURIDAD CUÁNTICA • NIVEL 7 PRIVADO</h3><div class="small">Steane [[7,1,3]] + AES-256-Q • HSM + MPC<br>Resistencia cuántica privada activa<br>Nodo Raíz: Toluca HQ • Entidad Privada</div></div>
+</div>
 
+<div class="btns">
+<a class="btn btn-gold" href="https://wa.me/5215530806714?text=SOLICITO%20CIUDADANIA%20KRONOS%20ID%202608096674952" target="_blank">SOLICITAR CIUDADANÍA CUÁNTICA →</a>
+<a class="btn btn-black" href="https://etherscan.io/block/25692765" target="_blank">🔗 VER BLOQUE EN ETHERSCAN</a>
+</div>
+
+<footer>KRONOS MX CORE • ID Privado 2608096674952 • Hecho en México - Toluca, Estado de México • Bloque Génesis 25692765 • Infraestructura Privada hasta 2099<br>Entidad Tecnológica Privada. Sin afiliación gubernamental. No emite documentos oficiales. Credencial privada de comunidad tecnológica con anclaje criptográfico.<br>QEC [[7,1,3]] • Fidelity 99.9992% • Threshold 1.42e-6</footer>
 </body>
 </html>
