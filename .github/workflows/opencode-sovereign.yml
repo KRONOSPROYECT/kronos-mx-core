@@ -9,6 +9,11 @@ jobs:
   opencode:
     if: contains(github.event.comment.body, '/oc sovereign') || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      issues: write
+      pull-requests: write
     env:
       MODEL_API_KEY: ${{ secrets.MODEL_API_KEY }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
