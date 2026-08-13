@@ -1,0 +1,51 @@
+kronos-mx-core/
+│
+├── index.html -> 1. TU EMBAJADA
+│ Tu landing. Header: "Kronos MX - Entidad Tecnológica Privada"
+│ Sub: "Registro privado de membresías, no gubernamental"
+│ Botones: [Verificar] [Aviso Privado]
+│
+├── constancia.html -> 2. PLANTILLA MADRE KR-0001
+│ Esta es SOLO tuya.
+│ Dice: CONSTANCIA PRIVADA DE FUNDADOR - KR-0001
+│ ID: 7225862335 - Marco Valdovinos - Fundador
+│ QR que apunta a /verify/?id=7225862335
+│ Footer obligatorio: "Documento privado sin validez oficial gubernamental"
+│
+├── generador.html -> 3. TU FÁBRICA
+│ Form local: Nombre + ID interno + Tipo membresía
+│ Genera: /citizens/KR-XXXX.json + PDF con QR
+│ Todo en tu navegador, nada se sube a servidor
+│
+├── /assets/
+│ ├── style.css -> oro #d4af37 / negro #050507
+│ ├── logo.png -> TU logo, no águila oficial, no escudo nacional
+│ └── qr-lib.js -> librería para QR offline
+│
+├── /citizens/ -> 5. REGISTRO PRIVADO - NO SUBIR A GITHUB PÚBLICO
+│ ├── 7225862335.json -> { id: KR-0001, nombre: Marco, rol: fundador, hash: abc... }
+│ ├── KR-0002.json -> (se crean con generador)
+│ └── registry.json -> [{id, hash, timestamp}] - solo hashes, no datos sensibles
+│ ESTA CARPETA VA EN.gitignore SI EL REPO ES PÚBLICO
+│
+├── /verify/
+│ └── index.html -> 6. VERIFICADOR
+│ Lógica: lee?id= -> busca en registry.json -> compara hash -> muestra:
+│ VERDE: "Constancia privada KR-XXXX verificada - Bloque 25692765 - Safe Creative #..."
+│ ROJO: "No encontrada"
+│ Aquí pegas tu hash de Ethereum / Safe Creative como prueba de sellado
+│
+├── /legal/
+│ ├── aviso-privado.html -> 7. TU ESCUDO LEGAL - ESTE ES EL MÁS IMPORTANTE
+│ │ Debe decir textual:
+│ │ "Kronos MX es una entidad tecnológica privada, sin afiliación gubernamental.
+│ │ No emite documentos oficiales de identidad ni gubernamentales.
+│ │ Constancias son de membresía privada interna."
+│ └── prueba-safecreative.html -> link + captura de tu registro + TX hash Ethereum
+│
+├──.gitignore -> citizens/*.json (para no filtrar datos)
+├── opencode.json -> tus agentes que ya configuraste
+└── README.md -> 8. Para GitHub
+    "# Kronos MX Core - Entidad Privada
+    Registro privado de membresías. Código para transparencia operativa.
+    Registro Safe Creative #XXXX. Licencia privada, no comercial sin autorización."
