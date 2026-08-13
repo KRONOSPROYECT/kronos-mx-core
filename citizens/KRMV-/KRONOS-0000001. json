@@ -1,0 +1,23 @@
+{
+  "folio": "KRMV-KRONOS-0000001",
+  "marca": "KRONOS",
+  "titular": "Marco Antonio Rojas Valdovinos — KR-0001 Fundador Originario",
+  "fabricante": "Kronos MX Core - ID 7225862335 - Toluca HQ",
+  "emision": "2026-08-13",
+  "caducidad": "2027-08-13",
+  "estado": 0,
+  "estado_txt": "VERDE 0 = ACTIVO",
+  "id_fundacional": "7225862335",
+  "kr": "KR-0001",
+  "protocolo_base": "2608096674952",
+  "tx_base": "0x7ef5dbd264e100de9cbf639b2e5a0df10ab5c62769d2f2c49cae51b4e8e995a2",
+  "bloques_inteligentes": [
+    {"orden":1,"codigo":"2607086319439","tx":"0x8ca8e84e1258abac9acb29d14d25114e4775d782ecfda51ae29933247ed2970e","rol":"Acta Fundacional"},
+    {"orden":2,"codigo":"2607146379465","tx":"0xd2c2a7e128e6c81b689b3b0d9e1b31a46fb8df0391b7b6c05e7daa7fb895774c","rol":"Arquitectura"},
+    {"orden":3,"codigo":"2608056639878","tx":"0xd94bf2d1c1187bddf22fe8d376f7663f63a8b01b5e85367b052db43d1ed6a466","rol":"Sello Oro"},
+    {"orden":4,"codigo":"2608096674952","tx":"0x7ef5dbd264e100de9cbf639b2e5a0df10ab5c62769d2f2c49cae51b4e8e995a2","rol":"Protocolo Maestro KRMV VERDE/ROJO"}
+  ],
+  "hash": "KR-7225862335-2026-B5-FUNDADOR",
+  "version": "KRMV v2.1",
+  "nota_legal": "Documento privado de membresía interna. Entidad Tecnológica Privada sin afiliación gubernamental. No es identificación oficial."
+}
