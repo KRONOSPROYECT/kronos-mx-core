@@ -1,0 +1,4 @@
+:root{--gold:#C9A86A;--black:#0A0A0A;--paper:#F5F1E8}
+body{margin:0;background:var(--black);color:#fff;font-family:'Times New Roman',serif}
+.gold{color:var(--gold)} .border-gold{border:1px solid var(--gold)}
+a{color:var(--gold)}
