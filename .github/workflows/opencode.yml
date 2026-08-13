@@ -1,0 +1,24 @@
+name: KRONOS Soberano Agent
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+  pull_request:
+    types: [opened, synchronize]
+  schedule:
+    - cron: '0 9 * * 1' # Lunes 9am - stale agent
+
+jobs:
+  opencode:
+    if: contains(github.event.comment.body, '/oc') || github.event_name!= 'issue_comment' || contains(github.event.issue.labels.*.name, 'agent-fix')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anomalyco/opencode/github@latest
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
