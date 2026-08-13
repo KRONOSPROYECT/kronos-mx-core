@@ -1,133 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Verificador KRMV | KRONOS MX CORE v2.1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KRONOS MX CORE | VERIFICACIÓN SOBERANA</title>
 <style>
-:root{--gold:#C9A86A;--green:#00ff88;--red:#ff3344;--black:#050507;--card:#111114}
-*{box-sizing:border-box} body{margin:0;background:var(--black);color:#fff;font-family:Inter,system-ui;padding:24px;display:flex;justify-content:center}
-.wrap{max-width:760px;width:100%}
-.header{text-align:center;border:1px solid rgba(201,168,106,.3);padding:18px;margin-bottom:18px;background:var(--card)}
-.header h1{color:var(--gold);letter-spacing:6px;margin:0;font-size:22px;font-family:serif}
-input{width:100%;padding:14px;background:#000;border:1px solid #333;color:#fff;border-radius:8px;margin-top:12px}
-.btn{padding:12px 18px;background:var(--gold);color:#000;border:none;font-weight:700;letter-spacing:2px;border-radius:8px;cursor:pointer;margin-top:10px;width:100%}
-.result{margin-top:18px;border-radius:14px;overflow:hidden;border:1px solid #333}
-.result.verde{border-color:var(--green);box-shadow:0 0 30px rgba(0,255,136,.15)}
-.result.rojo{border-color:var(--red);box-shadow:0 0 30px rgba(255,51,68,.15)}
-.head{padding:18px;text-align:center;font-weight:800;letter-spacing:3px}
-.verde .head{background:rgba(0,255,136,.12);color:var(--green)}
-.rojo .head{background:rgba(255,51,68,.12);color:var(--red)}
-.body{padding:20px;background:var(--card);font-size:13px;line-height:1.8}
-.badge{font-family:monospace;font-size:9px;border:1px solid rgba(201,168,106,.25);padding:5px 7px;color:var(--gold);margin-right:6px;display:inline-block;margin-bottom:6px;text-decoration:none}
-.badge:hover{background:rgba(201,168,106,.12)}
-.hash{font-family:monospace;font-size:8px;word-break:break-all;background:#000;padding:8px;border:1px solid #222;margin-top:10px;color:#0f0}
-.legal{font-size:9px;opacity:.5;margin-top:14px;text-align:center;line-height:1.5}
+body{margin:0;background:#0a0a0a;color:#e5d3a3;font-family:'Courier New',monospace;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+.card{max-width:520px;width:100%;border:2px solid #d4af37;background:#111;padding:30px;box-shadow:0 0 30px rgba(212,175,55,0.3)}
+h1{color:#d4af37;text-align:center;letter-spacing:3px;margin:0 0 5px 0;font-size:22px}
+.sub{text-align:center;color:#888;font-size:12px;letter-spacing:2px;margin-bottom:25px}
+.estado{border:1px solid;padding:15px;text-align:center;margin:20px 0;font-weight:bold;letter-spacing:1px}
+.verde{border-color:#00ff88;color:#00ff88;background:rgba(0,255,136,0.08)}
+.rojo{border-color:#ff0040;color:#ff0040;background:rgba(255,0,64,0.08)}
+.fila{display:flex;justify-content:space-between;border-bottom:1px solid #222;padding:8px 0;font-size:13px}
+.fila span:last-child{color:#fff;word-break:break-all;text-align:right;max-width:60%}
+a{color:#d4af37;text-decoration:none;word-break:break-all}
+a:hover{text-decoration:underline}
+.hash{font-size:11px;color:#aaa;word-break:break-all;background:#000;padding:10px;margin:10px 0;border-left:3px solid #d4af37}
+.btn{display:block;text-align:center;border:1px solid #d4af37;color:#d4af37;padding:10px;margin-top:15px;text-decoration:none}
+.btn:hover{background:#d4af37;color:#000}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="header">
-    <h1>KRONOS MX — VERIFICADOR</h1>
-    <div style="font-size:10px;letter-spacing:3px;color:var(--gold)">PROTOCOLO KRMV-(MARCA)-0000001 | ID 7225862335</div>
-    <input id="inputFolio" placeholder="Ej: KRMV-NIKE-0000001">
-    <button class="btn" onclick="verificar()">VERIFICAR ESTADO VERDE / ROJO</button>
-  </div>
-
-  <div id="out"></div>
-
-  <div class="legal">
-    Entidad Tecnológica Privada. Verificación privada interna. No gubernamental. No valida INE/CURP/Pasaporte.<br>
-    Base legal: Registro 2608096674952 | 4 TX Ethereum verificables abajo.
-  </div>
+<div class="card">
+<h1>KRONOS MX CORE</h1>
+<div class="sub">TOLUCA HQ | LEGADO 2099 | B5 UNIFICADO</div>
+<div id="resultado">Cargando verificación...</div>
 </div>
-
 <script>
-// Simula tu registry.json - luego reemplaza con fetch('./../citizens/registry.json')
-const REGISTRY_DEMO = [
-  {"folio":"KRMV-KRONOS-0000001","hash":"demo","titular":"Marco KR-0001 Fundador","caducidad":"2027-08-13","estado":0,"marca":"KRONOS"},
-  {"folio":"KRMV-NIKE-0000001","hash":"demo","titular":"Lote Textil A1","caducidad":"2027-08-13","estado":0,"marca":"NIKE"}
-];
-
-const BLOQUES = [
-  {cod:"2607086319439", tx:"0x8ca8e84e1258abac9acb29d14d25114e4775d782ecfda51ae29933247ed2970e", rol:"Acta Fundacional"},
-  {cod:"2607146379465", tx:"0xd2c2a7e128e6c81b689b3b0d9e1b31a46fb8df0391b7b6c05e7daa7fb895774c", rol:"Arquitectura"},
-  {cod:"2608056639878", tx:"0xd94bf2d1c1187bddf22fe8d376f7663f63a8b01b5e85367b052db43d1ed6a466", rol:"Sello Oro"},
-  {cod:"2608096674952", tx:"0x7ef5dbd264e100de9cbf639b2e5a0df10ab5c62769d2f2c49cae51b4e8e995a2", rol:"Protocolo Maestro KRMV VERDE/ROJO"}
-];
-
-function getParam(name){ return new URLSearchParams(location.search).get(name); }
-
 async function verificar(){
-  let folio = (document.getElementById('inputFolio').value || getParam('id') || '').toUpperCase().trim();
-  if(!folio) return alert('Pon un folio KRMV-...');
-  
-  // 1. Intenta cargar registry.json real si existe
-  let registry = REGISTRY_DEMO;
-  try{
-    const r = await fetch('../citizens/registry.json'); if(r.ok) registry = await r.json();
-  }catch(e){}
-
-  let item = registry.find(x=>x.folio.toUpperCase()===folio);
-  
-  // Si no está en registry, intenta cargar el JSON individual /citizens/KRMV-xxx.json
-  if(!item){
-    try{
-      const r = await fetch(`../citizens/${folio}.json`); 
-      if(r.ok){
-        const j = await r.json();
-        item = {folio:j.folio, hash:j.hash||'--', titular:j.titular, caducidad:j.caducidad, estado:j.estado, marca:j.marca};
-      }
-    }catch(e){}
-  }
-
-  let estado = 0; let motivo = "ACTIVO";
-  let html = "";
-
-  if(!item){
-    estado = 1; motivo = "NO ENCONTRADO — POSIBLE FALSIFICACIÓN";
-  }else{
-    // 2. Revisa caducidad
-    if(item.caducidad){
-      const hoy = new Date().toISOString().split('T')[0];
-      if(item.caducidad < hoy){ estado = 1; motivo = `VENCIDO el ${item.caducidad}`; }
-    }
-    // 3. Revisa estado manual
-    if(item.estado === 1){ estado = 1; motivo = `REVOCADO MANUALMENTE — ${item.motivo||''}`; }
-  }
-
-  const clase = estado===0 ? 'verde' : 'rojo';
-  const icono = estado===0 ? '● VERDE 0 = ACTIVO — DOCUMENTO VÁLIDO' : `● ROJO 1 = ${motivo}`;
-
-  html = `
-  <div class="result ${clase}">
-    <div class="head">${icono}</div>
-    <div class="body">
-      <b>Folio:</b> ${folio}<br>
-      ${item?`<b>Marca:</b> ${item.marca}<br><b>Titular/Lote:</b> ${item.titular}<br><b>Caducidad:</b> ${item.caducidad}<br>`:'<b>Titular:</b> No registrado<br>'}
-      <b>ID Fundacional:</b> 7225862335 | KR-0001<br>
-      <b>Protocolo Base:</b> 2608096674952 — KRMV v2.1<br>
-      <div class="hash">Hash: ${item?.hash||'No registrado'}<br>Verificación: ${location.origin}/verify/?id=${folio}</div>
-      
-      <div style="margin-top:14px">
-        <div style="font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:6px">CADENA DE CONFIANZA — 4 TX VERIFICABLES</div>
-        ${BLOQUES.map(b=>`<a class="badge" href="https://etherscan.io/tx/${b.tx}" target="_blank">${b.cod}<br>${b.rol}<br>${b.tx.slice(0,10)}...</a>`).join('')}
-      </div>
-
-      ${estado===0 ? 
-        `<div style="margin-top:12px;color:var(--green);font-size:11px">✔ Hash coincide con registro privado | ✔ Vigencia vigente | ✔ Firma de ID 7225862335 válida</div>` :
-        `<div style="margin-top:12px;color:var(--red);font-size:11px">✖ Documento inválido. Motivo: ${motivo}. Si compraste este producto/lote, contacta a fabricante: Kronos MX Core ID 7225862335</div>`
-      }
-    </div>
-  </div>`;
-
-  document.getElementById('out').innerHTML = html;
+const params = new URLSearchParams(window.location.search);
+const id = params.get('id') || '7225862335';
+const div = document.getElementById('resultado');
+try{
+const r = await fetch(`../citizens/${id}.json?nocache=${Date.now()}`);
+if(!r.ok) throw new Error('ID NO ENCONTRADO');
+const data = await r.json();
+let html = '';
+if(data.blockchain && data.blockchain.tx){
+html += `<div class="estado verde">VERDE 0 = ACTIVO<br>ANCLADO EN ETHEREUM<br>${data.fvd || ''}</div>`;
+}else{
+html += `<div class="estado verde">VERDE 0 = ACTIVO<br>${data.fvd || ''}</div>`;
 }
-
-// Auto-verifica si viene ?id=KRMV-... en la URL del QR
-window.onload = ()=>{
-  const id = getParam('id');
-  if(id){ document.getElementById('inputFolio').value = id; verificar(); }
+html += `<div class="fila"><span>ID FUNDACIONAL</span><span>${data.id}</span></div>`;
+html += `<div class="fila"><span>RANGO</span><span>${data.rango}</span></div>`;
+if(data.safe_creative) html += `<div class="fila"><span>SAFE CREATIVE</span><span>${data.safe_creative}</span></div>`;
+if(data.blockchain){
+html += `<div class="fila"><span>RED</span><span>${data.blockchain.red}</span></div>`;
+html += `<div class="fila"><span>FECHA ANCLAJE</span><span>${data.blockchain.fecha_anclaje}</span></div>`;
+html += `<div style="margin-top:15px;font-size:12px;color:#d4af37">SHA256 DE LA OBRA:</div><div class="hash">${data.blockchain.sha256_obra}</div>`;
+html += `<div style="margin-top:15px;font-size:12px;color:#d4af37">TX ETHEREUM:</div><div class="hash"><a href="https://etherscan.io/tx/${data.blockchain.tx}" target="_blank">${data.blockchain.tx}</a></div>`;
+html += `<a class="btn" href="https://etherscan.io/tx/${data.blockchain.tx}" target="_blank">VER EN ETHERSCAN</a>`;
+html += `<a class="btn" href="${data.blockchain.verificacion}" target="_blank">VER CERTIFICADO SAFE CREATIVE</a>`;
 }
+html += `<div class="fila" style="margin-top:20px"><span>EMBAJADA</span><span><a href="${data.embajada || '../'}" target="_blank">kronos-mx-core/</a></span></div>`;
+div.innerHTML = html;
+}catch(e){
+div.innerHTML = `<div class="estado rojo">ROJO 1 = NO ENCONTRADO<br>ID ${id} NO EXISTE EN REGISTRO</div><a class="btn" href="../">VOLVER</a>`;
+}
+}
+verificar();
 </script>
 </body>
 </html>
