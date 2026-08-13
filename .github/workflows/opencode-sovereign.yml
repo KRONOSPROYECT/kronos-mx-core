@@ -23,7 +23,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          model: model_api/claude-spark-1.1
+          model: anthropic/claude-sonnet-4
           agent: sovereign
           use_github_token: true
           prompt: |
