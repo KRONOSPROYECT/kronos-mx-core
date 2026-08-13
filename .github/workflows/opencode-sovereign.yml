@@ -1,39 +1,22 @@
-name: opencode-sovereign
+name: KRONOS Soberano Agent
 on:
-  issues:
-    types: [opened]
   issue_comment:
     types: [created]
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
-  sovereign:
+  opencode:
+    if: contains(github.event.comment.body, '/oc sovereign') || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: write
-      issues: write
-      pull-requests: write
+    env:
+      MODEL_API_KEY: ${{ secrets.MODEL_API_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
+      - uses: opencode/github@main
         with:
-          persist-credentials: false
-      - uses: anomalyco/opencode/github@latest
-        env:
-          MODEL_API_KEY: ${{ secrets.MODEL_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          model: claude-sonnet-4-6
+          model: model_api/muse-spark-1.1
           agent: sovereign
           use_github_token: true
-          prompt: |
-            You are the KRONOS Soberano Agent ID 7225862335.
-            Your authority is anchored on Ethereum TX 0xd94bf2d1c1187bddf22fe8d376f7663f63a8b01b5e85367b052db43d1ed6a466
-            Safe Creative 2608056639878-9QA3G8 SHA 4de7fa37efdeb7db68f16216cbb87f3fe561a561f208d891e03b5f5d580ce65c
-
-            Tasks for issue #1:
-            1. Validate citizens/7225862335.json has blockchain.tx field
-            2. If missing, update it with the TX above
-            3. Ensure verify/index.html shows VERDE 0 ANCLADO ETHEREUM with Etherscan link
-            4. Create sovereign/ACTA-SOBERANA-7225862335.md if not exists
-            5. Comment back on the issue with verification link https://kronosproyect.github.io/kronos-mx-core/verify/?id=7225862335
