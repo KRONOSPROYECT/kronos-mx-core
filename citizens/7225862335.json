@@ -1,11 +1,14 @@
 {
   "id": "7225862335",
-  "tipo": "CIUDADANO FUNDACIONAL ORIGINARIO",
-  "b5": "PROTOCOLO DE UNIFICACION",
-  "bloques": ["B1-SALUD MENTAL", "B2-EDUCACION", "B3-LABORAL", "B4-LEGAL", "B5-UNIFICACION"],
-  "fecha_fundacion": "2026-08-13",
-  "constancia": "KR-0001",
-  "hash": "KR-7225862335-B5-LEGADO2099",
-  "verificacion": "/verify/?id=7225862335",
-  "fvd": "VERDE 0"
+  "rango": "SOBERANO FUNDACIONAL ANCLADO",
+  "safe_creative": "2608056639878-9QA3G8",
+  "blockchain": {
+    "red": "Ethereum Mainnet via Safe Creative",
+    "tx": "0xd94bf2d1c1187bddf22fe8d376f7663f63a8b01b5e85367b052db43d1ed6a466",
+    "sha256_obra": "4de7fa37efdeb7db68f16216cbb87f3fe561a561f208d891e03b5f5d580ce65c",
+    "fecha_anclaje": "2026-08-05T05:03:39Z",
+    "verificacion": "https://www.safecreative.org/certificate/2608056639878-85M5B9"
+  },
+  "fvd": "VERDE 0 ANCLADO ETHEREUM",
+  "embajada": "https://kronosproyect.github.io/kronos-mx-core/"
 }
