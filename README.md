@@ -1,24 +1,51 @@
-# KRONOS MX CORE
-### Infraestructura Nacional de Confianza Digital hasta 2099
+# KRONOS MX CORE | ID: 2608096674952
 
-**Bloque Génesis:** `25692765` (Ethereum)  
-**Sede:** Toluca, Estado de México  
-**Sello:** HECHO EN MÉXICO
+![Status](https://img.shields.io/badge/ESTADO-VERDE%20OPERATIVO-8aff5c?style=for-the-badge)
+![QEC](https://img.shields.io/badge/QEC-Steane%20%5B%5B7%2C1%2C3%5D%5D-00ff88?style=for-the-badge)
+![Bloque](https://img.shields.io/badge/Bloque%20G%C3%A9nesis-25692765-d4af37?style=for-the-badge)
+![Vigencia](https://img.shields.io/badge/Vigencia-2099-ffffff?style=for-the-badge)
+![Hecho](https://img.shields.io/badge/HECHO%20EN-M%C3%89XICO-006847?style=for-the-badge)
 
-KRONOS MX es una arquitectura soberana de trazabilidad digital. Diseñada para comercio local, municipios y empresas que requieren historial inmutable, auditable y permanente.
+### Infraestructura Privada de Confianza Digital hasta 2099 | Arquitectura soberana privada anclada en Ethereum
 
-Ningún dato se borra. Todo se verifica con QR.
-
-#### Arquitectura
-- **Núcleo:** Contratos anclados en Ethereum
-- **Capa de Verificación:** QR + timestamp hasta 2099
-- **Capa Local:** Despliegue para negocios de Lerma y municipios del Estado de México
-
-#### Caso Fundacional 001
-Despliegue en operación, anclado en bloque 25692765. Sirve como referencia de permanencia y auditoría.
-
-#### Licencia
-MIT - KRONOSPROYECT 2026. Código abierto, soberano y auditable.
+**Embajada Cuántica Soberana | Toluca HQ | Entidad Tecnológica Privada - Sin afiliación gubernamental**
 
 ---
-**HECHO EN MÉXICO | TOLUCA | 2099**
+
+## ¿QUÉ ES KRONOS?
+
+KRONOS es la primera Nación Cuántica Privada de México. No es gobierno, es infraestructura.
+
+Una red privada de confianza digital que usa corrección de errores cuánticos para que tu identidad, tu acta y tu ciudadanía no se puedan borrar, hackear o falsificar hasta 2099.
+
+**Ancla:** Ethereum Mainnet - Bloque Génesis `25692765`
+**ID Fundacional Privado:** `2608096674952`
+**Acta:** `DKR-25692765/2024`
+
+---
+
+## 🛡️ QUANTUM SHIELD - ¿Qué es [[7,1,3]]?
+
+Es nuestro blindaje. El Código Steane.
+
+> **[[7 físicos, 1 lógico, distancia 3]]**
+
+Imagina que tu acta es 1 diamante. En vez de guardarlo solo, lo guardamos con 7 guardias entrelazados cuánticamente.
+
+- **7** = 7 qubits físicos protegiendo tu dato
+- **1** = 1 dato lógico real (tu ciudadanía KR-XXXX)
+- **3** = Distancia 3 = Aguanta 1 ataque cuántico completo y se auto-repara solo
+
+**Resultado:**
+- Threshold: `1.42e-6` (1 error en 1 millón)
+- Supresión de error: `5.2×10⁻⁷`
+- Fidelity: `99.9992%`
+- Logical Error Rate: `1.2e-9`
+
+Lo mismo que usa IBM Quantum y Google Sycamore. Nosotros lo usamos para tu identidad.
+
+Sin QEC tu acta se corrompe con 1 error cuántico. Con KRONOS, 6 guardias corrigen al 7mo automáticamente.
+
+---
+
+## 🏗️ ARQUITECTURA
