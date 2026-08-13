@@ -1,0 +1,11 @@
+{
+  "id": "7225862335",
+  "tipo": "CIUDADANO FUNDACIONAL ORIGINARIO",
+  "b5": "PROTOCOLO DE UNIFICACION",
+  "bloques": ["B1-SALUD MENTAL", "B2-EDUCACION", "B3-LABORAL", "B4-LEGAL", "B5-UNIFICACION"],
+  "fecha_fundacion": "2026-08-13",
+  "constancia": "KR-0001",
+  "hash": "KR-7225862335-B5-LEGADO2099",
+  "verificacion": "/verify/?id=7225862335",
+  "fvd": "VERDE 0"
+}
