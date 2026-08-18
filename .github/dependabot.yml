@@ -1,0 +1,57 @@
+# Instala liboqs (en Linux/Mac)
+git clone https://github.com/open-quantum-safe/liboqs.git
+cd liboqs
+mkdir build && cd build
+cmake .. && make && sudo make install
+
+# Cifra un archivo con Kyber-1024
+oqs_crypto_encrypt -k kyber1024 -i expediente.pdf -o expediente.pdf.enc
+# Genera un par de llaves (pública y privada)
+oqs_crypto_sign -k dilithium5 -g
+
+# Firma un archivo
+oqs_crypto_sign -k dilithium5 -s expediente.pdf -o expediente.pdf.sig
+
+# Verifica la firma
+oqs_crypto_sign -k dilithium5 -v expediente.pdf expediente.pdf.sig
+# En tu archivo ~/.ssh/config
+Host *
+  KexAlgorithms sntrup761x25519-sha512@openssh.com
+  PubkeyAcceptedAlgorithms ssh-ed25519
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract SovereignLog {
+
+    mapping(bytes32 => bool) public folioUsado;
+    mapping(bytes32 => uint256) public bloqueRegistro;
+    mapping(bytes32 => address) public escaneadoPor;
+
+    event FolioValidado(bytes32 indexed hashFolio, address escaneadoPor, uint256 bloque);
+
+    function validarFolio(bytes32 _hashFolio) external returns (bool) {
+        require(!folioUsado[_hashFolio], "Folio ya fue escaneado");
+        folioUsado[_hashFolio] = true;
+        bloqueRegistro[_hashFolio] = block.number;
+        escaneadoPor[_hashFolio] = msg.sender;
+        emit FolioValidado(_hashFolio, msg.sender, block.number);
+        return true;
+    }
+
+    function estaVigente(bytes32 _hashFolio) external view returns (bool, uint256) {
+        return (!folioUsado[_hashFolio], bloqueRegistro[_hashFolio]);
+    }
+}
+# Ver el historial de cambios
+git reflog
+
+# Restaurar un archivo a una versión anterior
+git checkout <hash-del-commit> -- ruta/al/archivo
+
+# Ejemplo: recuperar index.html de hace 3 commits
+git checkout HEAD~3 -- index.html
+# Clonar tu repositorio completo (incluye todo el historial)
+git clone https://github.com/KRONOSPROYECT/kronos-mx-core.git
+
+# Crear un respaldo comprimido
+tar -czvf kronos-backup-$(date +%Y%m%d).tar.gz kronos-mx-core/
