@@ -49,3 +49,19 @@ Sin QEC tu acta se corrompe con 1 error cuántico. Con KRONOS, 6 guardias corrig
 ---
 
 ## 🏗️ ARQUITECTURA
+# 🏛️ Proyecto del Ecosistema KRONOS
+
+---
+
+**Este proyecto pertenece al ecosistema KRONOS, fundado por MARCO ANTONIO ROJAS VALDOVINOS.**  
+**Sello maestro:** `ad0b351cad1797da9fb1042363a2da3b45db58051e1555dbc9c0acc308f89870`
+
+**Fundado el:** 15/04/1999 - Activado en Toluca de Lerdo a las 22:35 hrs.  
+**Ángel Custodio del Ecosistema:** KRN-JELIEL-02-72 (Jeliel / שלמה).  
+**Cláusula de Uso:** Sin el permiso físico del fundador, este sistema y todos sus derivados devuelven `NULL`.
+
+---
+
+> *"Como es arriba en la ciudad, es abajo en el código; como es adentro en el alma, es afuera en la ejecución."*
+
+---
