@@ -1,0 +1,13 @@
+{
+  "name": "kronos-mx-core",
+  "version": "1.0.0",
+  "description": "Kronos MX Core project",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo \"Build script configured\"",
+    "test": "echo \"Test script configured\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
