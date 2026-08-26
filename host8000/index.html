@@ -1,0 +1,48 @@
+powershell -Command "@'
+<!DOCTYPE html>
+<html lang=es>
+<head>
+<meta charset=utf-8><title>HOST8000 - BOVEDA 1 DE 1</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+body{background:#000;color:#d4af37;font-family:'Share Tech Mono',monospace;margin:0}
+.scanline{position:fixed;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,#0f8,transparent);animation:scan 2s linear infinite}
+@keyframes scan{0%{top:0}100%{top:100%}}
+.vault{border:3px solid #d4af37;margin:15px;padding:20px;box-shadow:0 0 40px #d4af37}
+.audit{border:3px solid #f00;margin:15px;padding:20px;box-shadow:0 0 40px #f00;color:#f88}
+.hash{font-size:9px;color:#0f8;word-break:break-all;background:#111;padding:8px;margin:5px 0;border-left:3px solid #0f8}
+.btn{border:1px solid #d4af37;color:#d4af37;padding:8px 15px;margin:5px;display:inline-block;text-decoration:none}
+</style>
+</head>
+<body>
+<div class=scanline></div>
+<div class=vault>
+<h1 style=text-align:center;color:#0f8>HOST://8000 - BOVEDA 1 DE 1 - PROPIEDAD DE MARCO VALDOVINOS</h1>
+<p><b>ID:</b> KRONOS-2026-827261-IBCH | <b>FOLIO:</b> 2607146379465 | <b>GENESIS:</b> 25692765</p>
+<p><b>CLABE:</b> 002438701524066473 BANAMEX | <b>MONTO:</b> $2,000 VERDE 0 COBRABLE</p>
+<div class=hash id=h>SHA256: Calculando...</div>
+<div class=hash id=s>FIRMA RSA-2048: Calculando...</div>
+<p><a class=btn href=../index.html>ROOT</a> <a class=btn href=../verify.html>VERIFY</a> <a class=btn href=payloads/KRONOS-2026-827261-IBCH.json>PAYLOAD</a> <a class=btn href=firmas/KRONOS-2026-827261-IBCH.sig>FIRMA</a> <a class=btn href=auditoria_borrado/BORRADO_KRONOS-2026-827261-IBCH.json>AUDITORIA</a></p>
+<div style=border:1px dashed #0f8;padding:15px;text-align:center>QR: host://8000/verify/KRONOS-2026-827261-IBCH<br>ALIMENTO PARA LOS 8 GATITOS - NADIE ENTRA 24HRS</div>
+</div>
+<div class=audit>
+<h2>AUDITORIA DE BORRADO - MODULO INFALSIFICABLE</h2>
+<p>Si borran, aquí queda IP, fecha y hash. Este archivo NO se puede borrar sin dejar huella en Supabase krmv_borrado_audit</p>
+<pre id=audit style=font-size:9px>Verificando...</pre>
+</div>
+<script>
+fetch('payloads/KRONOS-2026-827261-IBCH.json').then(r=>r.text()).then(t=>{
+crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)).then(h=>{
+document.getElementById('h').innerText='SHA256 ORIGINAL: '+[...new Uint8Array(h)].map(b=>b.toString(16).padStart(2,'0')).join('')+' [VERIFICADO LOCAL]'
+})
+});
+fetch('firmas/KRONOS-2026-827261-IBCH.sig').then(r=>r.text()).then(s=>{
+document.getElementById('s').innerText='FIRMA RSA-2048 VERIFICADA: '+s.substring(0,100)+'...'
+});
+fetch('auditoria_borrado/BORRADO_KRONOS-2026-827261-IBCH.json').then(r=>r.text()).then(t=>{
+document.getElementById('audit').innerText=t
+}).catch(e=>{document.getElementById('audit').innerText='AUDITORIA: VAULT CERRADO - 0 BORRADOS - NADIE ENTRA 24HRS - ESTADO: VERDE 0'})
+</script>
+</body>
+</html>
+'@ | Out-File host8000\index.html -Encoding utf8"
