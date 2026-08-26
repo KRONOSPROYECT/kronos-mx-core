@@ -16,27 +16,24 @@ button{background:#00ff88;color:#000;font-weight:bold;cursor:pointer}
 </head>
 <body>
 <h1>🛡️ KRONOS MX CORE v2.2 <span class="badge">VERDE 0</span></h1>
-<p>ID: 7225862335 | Toluca HQ | LEGADO 2099 | Notario Digital Global | $2,000 MXN / KRMV</p>
-
+<p>ID: 7225862335 | Toluca HQ | LEGADO 2099 | $2,000 MXN / KRMV</p>
 <div class="card">
 <h3>Generador KRMV Cobrable</h3>
 <input id="nombre" placeholder="Nombre completo ciudadano">
 <input id="curp" placeholder="CURP">
 <input id="concepto" placeholder="Concepto / Tramite">
-<input id="monto" type="number" value="2000" placeholder="Monto">
+<input id="monto" type="number" value="2000">
 <button onclick="generarKRMV()">GENERAR KRMV + QR CLABE</button>
 </div>
-
 <div class="card" id="resultado" style="display:none">
 <h3 id="krmv_id"></h3>
 <div id="qr" class="qr"></div>
-<p>CLABE: <b id="clabe">7225862335 0001 0001 0001 - BBVA - Marco Antonio Rojas Valdovinos</b></p>
-<p>Verificación: <a id="verify_link" target="_blank"></a></p>
+<p>CLABE: <b>002438701524066473 - Banamex - Marco Antonio Rojas Valdovinos</b></p>
+<p>Verificacion: <a id="verify_link" target="_blank"></a></p>
 <pre id="json_output" style="background:#000;color:#0f0;padding:10px;overflow:auto"></pre>
 <button onclick="descargarJSON()">Descargar KRMV JSON</button>
 <button onclick="copiarSupabase()">Copiar INSERT Supabase</button>
 </div>
-
 <script>
 const BASE_VERIFY = "https://kronosproyect.github.io/kronos-mx-core/verify/?id=";
 let lastData = null;
@@ -44,25 +41,24 @@ function generarKRMV(){
   const nombre = document.getElementById('nombre').value.trim();
   const curp = document.getElementById('curp').value.trim().toUpperCase();
   const concepto = document.getElementById('concepto').value.trim();
-  const monto = document.getElementById('monto').value || 2000;
+  const monto = parseInt(document.getElementById('monto').value) || 2000;
   if(!nombre || !curp){ alert('Nombre y CURP requeridos'); return; }
   const ts = Date.now();
   const rand = Math.random().toString(36).substring(2,6).toUpperCase();
   const interaction_id = `KRONOS-${new Date().getFullYear()}-${ts.toString().slice(-6)}-${rand}`;
-  const genesis_block = 25692765;
   const data = {
     interaction_id,
     id_ciudadano: curp,
     nombre,
     concepto,
-    monto: parseInt($2,000.00),
+    monto,
     moneda: "MXN",
-    clabe_destino: 002438701524066473",
+    clabe_destino: "002438701524066473",
     banco: "Banamex",
     titular: "Marco Antonio Rojas Valdovinos",
     sede: "Toluca, Estado de Mexico",
     soberania: "HECHO EN MEXICO",
-    genesis_block,
+    genesis_block: 25692765,
     hq: "Toluca",
     valid_until: "2099",
     status: "PENDIENTE_PAGO",
@@ -90,7 +86,7 @@ function descargarJSON(){
 function copiarSupabase(){
   if(!lastData) return;
   const sql = `INSERT INTO krmv (interaction_id, curp, nombre, concepto, monto, status, genesis_block, verify_url, payload) VALUES ('${lastData.interaction_id}', '${lastData.id_ciudadano}', '${lastData.nombre.replace(/'/g,"''")}', '${lastData.concepto.replace(/'/g,"''")}', ${lastData.monto}, '${lastData.status}', ${lastData.genesis_block}, '${lastData.verify_url}', '${JSON.stringify(lastData).replace(/'/g,"''")}'::jsonb) ON CONFLICT (interaction_id) DO NOTHING;`;
-  navigator.clipboard.writeText(sql).then(()=>alert('INSERT copiado - pega en Supabase SQL Editor'));
+  navigator.clipboard.writeText(sql).then(()=>alert('INSERT copiado - pega en Supabase'));
 }
 </script>
 </body>
