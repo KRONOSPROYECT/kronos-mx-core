@@ -1,105 +1,97 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Generador KRMV | KRONOS MX CORE v2.1 - ID 7225862335</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+﻿<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KRONOS MX CORE - Generador Notario Global v2.2 - ID 7225862335</title>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <style>
-:root{--gold:#C9A86A;--black:#0A0A0A;--card:#111114;--green:#00FF88;--red:#FF4444}
-*{box-sizing:border-box} body{background:var(--black);color:#fff;font-family:Inter,system-ui;padding:18px;margin:0}
-.box{max-width:560px;margin:auto;border:1px solid var(--gold);padding:22px;background:var(--card);border-radius:12px}
-h2{color:var(--gold);letter-spacing:3px;margin:0 0 4px;font-size:18px}
-.sub{font-size:10px;letter-spacing:2px;opacity:.6;margin-bottom:16px}
-label{font-size:9px;letter-spacing:2px;color:var(--gold);margin:12px 0 4px;display:block}
-input{width:100%;padding:12px;background:#000;border:1px solid #333;color:#fff;border-radius:6px}
-button{width:100%;padding:13px;margin:10px 0 0;background:var(--gold);color:#000;border:none;font-weight:800;letter-spacing:2px;border-radius:8px;cursor:pointer}
-button.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold)}
-.res{margin-top:16px;padding:14px;border:1px solid #222;background:#000;font-size:12px;line-height:1.6}
-.verde{color:var(--green);font-weight:700} .rojo{color:var(--red);font-weight:700}
-.qr{width:130px;height:130px;background:#fff;margin:12px auto;display:flex;align-items:center;justify-content:center}
-.hash{font-family:monospace;font-size:8px;word-break:break-all;color:#0f0;margin-top:8px;background:#050505;padding:8px;border:1px solid #222}
-a{color:var(--gold)}
-</style></head>
-<body><div class="box">
-<h2>GENERADOR KRMV v2.1</h2>
-<div class="sub">ID 7225862335 | Protocolo 2608096674952 | TX 0x7ef5...95a2 | KRMV-(MARCA)-0000001</div>
+body{font-family:system-ui;background:#0a0a0a;color:#00ff88;padding:20px;max-width:900px;margin:auto}
+.card{background:#111;border:1px solid #00ff88;padding:20px;border-radius:12px;margin-bottom:20px}
+input,button{width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #333;background:#000;color:#0f0}
+button{background:#00ff88;color:#000;font-weight:bold;cursor:pointer}
+.qr{background:#fff;padding:10px;display:inline-block;border-radius:8px}
+.badge{color:#000;background:#00ff88;padding:4px 8px;border-radius:4px;font-weight:bold}
+</style>
+</head>
+<body>
+<h1>🛡️ KRONOS MX CORE v2.2 <span class="badge">VERDE 0</span></h1>
+<p>ID: 7225862335 | Toluca HQ | LEGADO 2099 | Notario Digital Global | $2,000 MXN / KRMV</p>
 
-<label>MARCA (ej: KRONOS, NIKE, TOLUCA)</label>
-<input id="marca" value="KRONOS" placeholder="MARCA">
+<div class="card">
+<h3>Generador KRMV Cobrable</h3>
+<input id="nombre" placeholder="Nombre completo ciudadano">
+<input id="curp" placeholder="CURP">
+<input id="concepto" placeholder="Concepto / Tramite">
+<input id="monto" type="number" value="2000" placeholder="Monto">
+<button onclick="generarKRMV()">GENERAR KRMV + QR CLABE</button>
+</div>
 
-<label>TITULAR / PERSONA / LOTE</label>
-<input id="titular" placeholder="Ej: Juan Pérez o Lote Textil A1">
-
-<label>FABRICANTE / ORIGEN</label>
-<input id="fabricante" value="Kronos MX Core - ID 7225862335 - Toluca HQ">
-
-<label>EMISIÓN</label>
-<input id="emision" type="date">
-
-<label>CADUCIDAD / VIGENCIA</label>
-<input id="caducidad" type="date">
-
-<label>CORRELATIVO (7 dígitos - automático)</label>
-<input id="corr" type="number" value="1">
-
-<button onclick="generar()">GENERAR KRMV + HASH + QR</button>
-<button class="ghost" onclick="descargar()">DESCARGAR JSON</button>
-
-<div id="res" class="res" style="display:none"></div>
+<div class="card" id="resultado" style="display:none">
+<h3 id="krmv_id"></h3>
+<div id="qr" class="qr"></div>
+<p>CLABE: <b id="clabe">7225862335 0001 0001 0001 - BBVA - Marco Antonio Rojas Valdovinos</b></p>
+<p>Verificación: <a id="verify_link" target="_blank"></a></p>
+<pre id="json_output" style="background:#000;color:#0f0;padding:10px;overflow:auto"></pre>
+<button onclick="descargarJSON()">Descargar KRMV JSON</button>
+<button onclick="copiarSupabase()">Copiar INSERT Supabase</button>
 </div>
 
 <script>
-document.getElementById('emision').valueAsDate = new Date();
-let n=new Date(); n.setFullYear(n.getFullYear()+1);
-document.getElementById('caducidad').valueAsDate = n;
-document.getElementById('corr').value = localStorage.getItem('krmv_count')||1;
-
-let lastData=null, lastHash=null;
-
-async function generar(){
-  const marca = document.getElementById('marca').value.toUpperCase().replace(/[^A-Z0-9]/g,'')||'KRONOS';
-  const titular = document.getElementById('titular').value.trim()||'Titular Privado';
-  const fabricante = document.getElementById('fabricante').value.trim();
-  const emision = document.getElementById('emision').value;
-  const caducidad = document.getElementById('caducidad').value;
-  const corrNum = document.getElementById('corr').value;
-  const folio = `KRMV-${marca}-${String(corrNum).padStart(7,'0')}`;
-
-  const payload = {
-    folio, marca, titular, fabricante, emision, caducidad,
-    estado:0, estado_txt:"VERDE 0 = ACTIVO",
-    id_fundacional:"7225862335",
-    protocolo_base:"2608096674952",
-    tx_base:"0x7ef5dbd264e100de9cbf639b2e5a0df10ab5c62769d2f2c49cae51b4e8e995a2",
-    bloques:["2607086319439","2607146379465","2608056639878","2608096674952"],
-    version:"KRMV v2.1"
+const BASE_VERIFY = "https://kronosproyect.github.io/kronos-mx-core/verify/?id=";
+let lastData = null;
+function generarKRMV(){
+  const nombre = document.getElementById('nombre').value.trim();
+  const curp = document.getElementById('curp').value.trim().toUpperCase();
+  const concepto = document.getElementById('concepto').value.trim();
+  const monto = document.getElementById('monto').value || 2000;
+  if(!nombre || !curp){ alert('Nombre y CURP requeridos'); return; }
+  const ts = Date.now();
+  const rand = Math.random().toString(36).substring(2,6).toUpperCase();
+  const interaction_id = `KRONOS-${new Date().getFullYear()}-${ts.toString().slice(-6)}-${rand}`;
+  const genesis_block = 25692765;
+  const data = {
+    interaction_id,
+    id_ciudadano: curp,
+    nombre,
+    concepto,
+    monto: parseInt($2,000.00),
+    moneda: "MXN",
+    clabe_destino: 002438701524066473",
+    banco: "Banamex",
+    titular: "Marco Antonio Rojas Valdovinos",
+    sede: "Toluca, Estado de Mexico",
+    soberania: "HECHO EN MEXICO",
+    genesis_block,
+    hq: "Toluca",
+    valid_until: "2099",
+    status: "PENDIENTE_PAGO",
+    timestamp: new Date().toISOString(),
+    verify_url: BASE_VERIFY + interaction_id,
+    legado: "ID 7225862335 - VERDE 0"
   };
-
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify(payload)));
-  const hash = [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
-
-  lastData=payload; lastHash=hash;
-
-  const res=document.getElementById('res');
-  res.style.display='block';
-  res.innerHTML=`
-    <div class="verde">● VERDE 0 = ACTIVO — ${folio}</div>
-    <p><b>Marca:</b> ${marca}<br><b>Titular:</b> ${titular}<br><b>Fabricante:</b> ${fabricante}<br>
-    <b>Emisión:</b> ${emision} | <b>Vigencia:</b> ${caducidad}</p>
-    <div id="qr" class="qr"></div>
-    <div class="hash">Folio: ${folio}<br>Hash SHA256: ${hash}<br><br>Guarda como: citizens/${folio}.json<br>Agrega a registry.json:<br>{"folio":"${folio}","hash":"${hash}","titular":"${titular}","caducidad":"${caducidad}","estado":0}</div>
-    <p><a href="verify/?id=${folio}" target="_blank">→ Verificar en /verify/?id=${folio}</a></p>
-    <p style="font-size:9px;opacity:.5">Documento privado sin validez oficial gubernamental. Verificación en /verify/ + Etherscan.</p>
-  `;
-  
-  document.getElementById('qr').innerHTML='';
-  new QRCode(document.getElementById('qr'), {text:`${location.origin}/verify/?id=${folio}&h=${hash.slice(0,16)}`, width:120, height:120});
-
-  localStorage.setItem('krmv_count', parseInt(corrNum)+1);
-  document.getElementById('corr').value = parseInt(corrNum)+1;
+  lastData = data;
+  document.getElementById('krmv_id').innerText = interaction_id;
+  document.getElementById('verify_link').href = data.verify_url;
+  document.getElementById('verify_link').innerText = data.verify_url;
+  document.getElementById('json_output').innerText = JSON.stringify(data, null, 2);
+  document.getElementById('qr').innerHTML = "";
+  new QRCode(document.getElementById('qr'), {text: data.verify_url, width:180, height:180});
+  document.getElementById('resultado').style.display = "block";
 }
-
-function descargar(){
-  if(!lastData) return alert('Primero genera');
-  const blob=new Blob([JSON.stringify({...lastData, hash:lastHash}, null, 2)], {type:'application/json'});
-  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`${lastData.folio}.json`; a.click();
+function descargarJSON(){
+  if(!lastData) return;
+  const blob = new Blob([JSON.stringify(lastData,null,2)], {type:"application/json"});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = lastData.interaction_id + ".json";
+  a.click();
 }
-</script></body></html>
+function copiarSupabase(){
+  if(!lastData) return;
+  const sql = `INSERT INTO krmv (interaction_id, curp, nombre, concepto, monto, status, genesis_block, verify_url, payload) VALUES ('${lastData.interaction_id}', '${lastData.id_ciudadano}', '${lastData.nombre.replace(/'/g,"''")}', '${lastData.concepto.replace(/'/g,"''")}', ${lastData.monto}, '${lastData.status}', ${lastData.genesis_block}, '${lastData.verify_url}', '${JSON.stringify(lastData).replace(/'/g,"''")}'::jsonb) ON CONFLICT (interaction_id) DO NOTHING;`;
+  navigator.clipboard.writeText(sql).then(()=>alert('INSERT copiado - pega en Supabase SQL Editor'));
+}
+</script>
+</body>
+</html>

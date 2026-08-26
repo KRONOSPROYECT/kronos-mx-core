@@ -1,37 +1,37 @@
--- Habilitación de extensiones criptográficas nativas de la infraestructura
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+﻿-- KRONOS MX CORE - SUPABASE v2.2 - ID 7225862335 - VERDE 0 - Toluca HQ
+-- Ejecuta esto en Supabase SQL Editor
 
--- Tabla Maestra KRONOS MX CORE v2.2 - Notario Digital Global
-CREATE TABLE evidencias_fotos (
-    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-    folio VARCHAR(50) NOT NULL,
-    foto_hash CHAR(64) NOT NULL,
-    interaction_id CHAR(64) NOT NULL UNIQUE,
-    titular VARCHAR(100) NOT NULL,
-    caducidad DATE NOT NULL DEFAULT '2027-08-13',
-    estado SMALLINT DEFAULT 0, -- 0: VERDE 0 = ACTIVO, 1: REVOCADO, 2: AUDITORÍA
-    estado_txt VARCHAR(30) DEFAULT 'VERDE 0 = ACTIVO',
-    timestamp_ms TIMESTAMP WITH TIME ZONE DEFAULT clock_timestamp(),
-    ntp VARCHAR(100) DEFAULT 'pool.ntp.org + GPS Sub-millisecond Anchor',
-    tx_eth CHAR(66) NOT NULL,
-    bloque BIGINT NOT NULL,
-    safe_creative VARCHAR(50) NOT NULL,
-    
-    -- Matrices de Cumplimiento Indexadas por Fase del Roadmap
-    compliance_mx VARCHAR(150) DEFAULT 'NOM-151 Contratos de Membresía Privada + LFEA Art 89 + Código de Comercio Art 49 Constancia Digital',
-    compliance_eu VARCHAR(150) DEFAULT 'eIDAS Art 25 Proveedor de Servicios de Confianza + ISO 27037 Preservación de Evidencia + GDPR Art 25 Privacy by Design',
-    compliance_us VARCHAR(150) DEFAULT 'Federal Rules of Evidence FRE 902(13) Self-Authenticating Digital Evidence + UETA Compliance',
-    
-    -- Datos de Recaudación y Cumplimiento Financiero (No Captación Art 316 CP)
-    clabe VARCHAR(18) DEFAULT '012180015512345678',
-    concepto VARCHAR(50) NOT NULL,
-    regimen VARCHAR(100) DEFAULT 'Sociedad Tecnológica Privada - NO CAPTACION Art 316 CP',
-    fase_roadmap VARCHAR(30) DEFAULT 'Fase 1: México (2026-2027)',
-    
-    -- CANDADO DE INTEGRIDAD FORENSE B5: Bloquea intentos de clonación de evidencia
-    CONSTRAINT unique_folio_hash UNIQUE (folio, foto_hash)
+-- 1. Tabla ciudadanos
+CREATE TABLE IF NOT EXISTS citizens (
+  curp TEXT PRIMARY KEY,
+  nombre TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Índices optimizados para búsquedas sub-milisegundo en auditorías masivas
-CREATE INDEX idx_kronos_hash ON evidencias_fotos(foto_hash);
-CREATE INDEX idx_kronos_folio ON evidencias_fotos(folio);
+-- 2. Tabla KRMV cobrable con candado UNIQUE
+CREATE TABLE IF NOT EXISTS krmv (
+  interaction_id TEXT PRIMARY KEY, -- CANDADO ANTI-DUPLICADO
+  curp TEXT REFERENCES citizens(curp),
+  nombre TEXT NOT NULL,
+  concepto TEXT,
+  monto INT NOT NULL DEFAULT 2000,
+  moneda TEXT DEFAULT 'MXN',
+  status TEXT DEFAULT 'PENDIENTE_PAGO' CHECK (status IN ('PENDIENTE_PAGO','PAGADO','VERIFICADO','CANCELADO')),
+  genesis_block BIGINT DEFAULT 25692765,
+  verify_url TEXT,
+  payload JSONB,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(interaction_id) -- 23505 evita duplicados
+);
+
+-- 3. Indice para busqueda rapida
+CREATE INDEX IF NOT EXISTS idx_krmv_curp ON krmv(curp);
+CREATE INDEX IF NOT EXISTS idx_krmv_status ON krmv(status);
+
+-- 4. RLS opcional (desactivalo si pruebas local)
+ALTER TABLE krmv ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "public read" ON krmv FOR SELECT USING (true);
+CREATE POLICY "public insert" ON krmv FOR INSERT WITH CHECK (true);
+
+-- 5. Prueba
+-- INSERT INTO krmv (interaction_id, curp, nombre, concepto, monto, status, genesis_block, verify_url, payload) VALUES ('KRONOS-2026-TEST-001', 'ROVM000000HMCXXX00', 'TEST CIUDADANO', 'PRUEBA VERDE 0', 2000, 'PENDIENTE_PAGO', 25692765, 'https://kronosproyect.github.io/kronos-mx-core/verify/?id=KRONOS-2026-TEST-001', '{"test":true}'::jsonb) ON CONFLICT (interaction_id) DO NOTHING;
