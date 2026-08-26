@@ -1,12 +1,52 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KRONOS VERIFY</title><style>body{background:#0a0a0a;color:#00ff88;font-family:system-ui;padding:20px;text-align:center}.card{background:#111;border:1px solid #0f8;padding:20px;border-radius:12px;max-width:600px;margin:auto}</style></head><body><h1>🛡️ KRONOS VERIFY - VERDE 0</h1><p id="id-display"></p><div class="card" id="result">Cargando...</div><script type="module">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KRONOS VERIFY VERDE 0 - ID 7225862335</title>
+<style>
+body{background:#0a0a0a;color:#00ff88;font-family:system-ui;padding:20px;text-align:center}
+.card{background:#111;border:1px solid #0f8;padding:20px;border-radius:12px;max-width:650px;margin:20px auto;word-break:break-all;text-align:left}
+h1{text-align:center}
+</style>
+</head>
+<body>
+<h1>🛡️ KRONOS VERIFY - VERDE 0</h1>
+<p id="id-display" style="color:#888"></p>
+<div class="card" id="result">Cargando desde Supabase krcrqaqx... </div>
+
+<script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
-const URL="https://krcrqaqxufrauwwyrsvo.supabase.co"
-const KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtyY3JxcmFxeHVmcGF1d3d5cnN2byIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzU2MjI0NTIzOSwiZXhwIjoyMDcxODIwNTIzOX0.WFZOYu5r2z3L3G9vJ5u4sK3J2_example_REEMPLAZA_CON_TU_ANON_KEY_REAL"
-const supabase=createClient(URL,KEY)
-const id=new URLSearchParams(window.location.search).get('id')
-document.getElementById('id-display').innerText=id
-const {data,error}=await supabase.from('krmv').select('*').eq('interaction_id',id).single()
-if(error||!data){document.getElementById('result').innerHTML=`❌ NO ENCONTRADO: ${id}<br>${error?.message||''}`}
-else{document.getElementById('result').innerHTML=`✅ KRMV VERIFICADO<br><br>ID: ${data.interaction_id}<br>Nombre: ${data.nombre}<br>CURP: ${data.curp}<br>Concepto: ${data.concepto}<br>Monto: $${data.monto} ${data.moneda}<br>Status: ${data.status}<br>Genesis: ${data.genesis_block}<br><a href="${data.verify_url}" style="color:#0ff">${data.verify_url}</a>`}
-</script></body></html>
-<!DOCTYPE html><html lang="es-MX"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>KRONOS Verify - ID 7225862335</title><style>body{font-family:system-ui;background:#0a0a0a;color:#0f0;padding:20px;max-width:700px;margin:auto}.card{background:#111;border:1px solid #0f0;padding:20px;border-radius:12px}</style></head><body><h1>🛡️ KRONOS MX VERIFY</h1><div class="card" id="box">Verificando...</div><script>const p=new URLSearchParams(location.search);const id=p.get('id');document.getElementById('box').innerHTML=id?`<h2>${id}</h2><p>Genesis: 25692765</p><p>Sede: Toluca - HECHO EN MEXICO</p><p>Hasta: 2099</p><p>ID: 7225862335 VERDE 0</p><pre>${JSON.stringify({interaction_id:id,verified:true},null,2)}</pre>`:"Falta ?id=KRONOS-...";</script></body></html>
+const SUPABASE_URL = "https://krcrqaqxufrauwwyrsvo.supabase.co"
+// ⚠️ REEMPLAZA ABAJO CON TU ANON KEY REAL (Project Settings -> API -> anon public)
+const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtyY3JxcmFxeHVmcGF1d3d5cnN2byIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzU2MjI0NTIzOSwiZXhwIjoyMDcxODIwNTIzOX0.9e2w4z1_XXXXXX_REEMPLAZA_TODO_ESTO"
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON)
+const id = new URLSearchParams(window.location.search).get('id')
+document.getElementById('id-display').innerText = id || 'Sin ?id='
+if(!id){
+  document.getElementById('result').innerHTML = '❌ Falta ?id=KRONOS-2026-827261-IBCH'
+} else {
+  const { data, error } = await supabase.from('krmv').select('*').eq('interaction_id', id).single()
+  if(error || !data){
+    document.getElementById('result').innerHTML = `❌ NO ENCONTRADO: ${id}<br><small>${error?.message||''}<br>Verifica que pusiste la anon key real y que la tabla krmv está expuesta en Data API</small>`
+  } else {
+    document.getElementById('result').innerHTML = `
+      ✅ KRMV VERIFICADO - COBRABLE VERDE 0<br><br>
+      <b>ID:</b> ${data.interaction_id}<br>
+      <b>Nombre:</b> ${data.nombre}<br>
+      <b>CURP:</b> ${data.curp}<br>
+      <b>Concepto:</b> ${data.concepto}<br>
+      <b>Monto:</b> $${data.monto} ${data.moneda||'MXN'}<br>
+      <b>Status:</b> ${data.status}<br>
+      <b>Genesis:</b> ${data.genesis_block}<br>
+      <b>CLABE:</b> 002438701524066473 - Banamex<br>
+      <b>ID Legado:</b> 7225862335<br><br>
+      <a href="${data.verify_url}" style="color:#0ff">${data.verify_url}</a><br><br>
+      <small>${data.created_at}</small>
+      <pre style="background:#000;padding:10px;margin-top:10px;overflow:auto">${JSON.stringify(data.payload||data,null,2)}</pre>
+    `
+  }
+}
+</script>
+</body>
+</html>
