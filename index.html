@@ -1,183 +1,45 @@
+powershell -Command "@'
 <!DOCTYPE html>
-<html lang="es">
+<html lang=es>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>KRONOS MX CORE v2.0 | Legado 2099 | ID 7225862335</title>
-<meta name="description" content="KRONOS MX CORE v2.0 - Entidad Tecnológica Privada - Protocolo FVD-(MARCA)-00001 - ID 7225862335 - 5 registros blockchain">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'>
+<title>KRONOS V8 - SYNCRO VALDOVINOS - 01 10</title>
 <style>
-:root{
- --gold:#C9A86A;
- --gold-bright:#d4af37;
- --black:#050507;
- --card:#111114;
- --green:#00ff88;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  margin:0;
-  background: radial-gradient(1200px 600px at 50% -20%, #1a1a0a 0%, var(--black) 60%);
-  color:#f5f3ef;
-  font-family: 'Times New Roman', serif;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:24px;
-}
-.embassy{
-  width:100%;
-  max-width:720px;
-  border:1px solid rgba(201,168,106,0.3);
-  background: linear-gradient(180deg, rgba(201,168,106,0.08), rgba(0,0,0,0));
-  backdrop-filter: blur(6px);
-  padding:48px 28px;
-  box-shadow: 0 0 80px rgba(201,168,106,0.15), inset 0 1px 0 rgba(255,255,255,0.05);
-}
-h1{
-  color:var(--gold);
-  letter-spacing:8px;
-  font-size: clamp(28px, 6vw, 42px);
-  font-weight:400;
-  margin-bottom:8px;
-}
-.sub{
-  letter-spacing:4px;
-  font-size:12px;
-  color:var(--gold);
-  opacity:0.9;
-  margin-bottom:28px;
-}
-.id-box{
-  border:1px solid var(--gold);
-  padding:18px 24px;
-  margin:28px auto;
-  max-width:380px;
-  letter-spacing:3px;
-  font-size:13px;
-  line-height:1.8;
-  background: rgba(201,168,106,0.05);
-}
-.id-box b{color:var(--gold-bright)}
-.badges{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin:24px 0;
-}
-.badges span{
-  font-family: monospace;
-  font-size:9px;
-  border:1px solid rgba(201,168,106,0.25);
-  padding:6px 8px;
-  color:var(--gold);
-  letter-spacing:1px;
-}
-.badges .active{border-color:var(--gold); background: rgba(201,168,106,0.12)}
-.nav{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:32px;
-}
-.nav a{
-  color:var(--gold);
-  text-decoration:none;
-  border:1px solid var(--gold);
-  padding:12px 10px;
-  font-size:11px;
-  letter-spacing:2px;
-  transition: all .25s ease;
-  display:block;
-}
-.nav a:hover{
-  background: var(--gold);
-  color:#000;
-  box-shadow: 0 0 20px rgba(201,168,106,0.4);
-}
-.nav a.full{grid-column: span 2; background: var(--gold); color:#000; font-weight:700}
-.legal{
-  margin-top:28px;
-  font-size:9px;
-  letter-spacing:1px;
-  opacity:0.5;
-  line-height:1.6;
-}
-.status{
-  margin-top:18px;
-  font-family: monospace;
-  font-size:10px;
-  color:var(--green);
-  letter-spacing:2px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+body{background:#000;color:#d4af37;font-family:'Share Tech Mono',monospace;margin:0;overflow-x:hidden}
+.scanline{position:fixed;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,#0f8,transparent);animation:scan 3s linear infinite;z-index:999}
+@keyframes scan{0%{top:0}100%{top:100%}}
+.vault{border:2px solid #d4af37;margin:15px;padding:20px;box-shadow:0 0 30px #d4af37, inset 0 0 20px rgba(212,175,55,0.1);position:relative}
+.vault:before{content:'ANTIFALSIFICABLE // PROPIEDAD PRIVADA // 1 DE 1';position:absolute;top:-10px;left:20px;background:#000;padding:0 10px;font-size:10px;color:#0f8}
+h1{color:#0f8;text-shadow:0 0 10px #0f8;text-align:center;letter-spacing:3px}
+.hash{color:#0f8;font-size:9px;word-break:break-all;background:#0a0a0a;padding:8px;border-left:3px solid #0f8;margin:8px 0}
+.gold{color:#d4af37}
+.btn{display:inline-block;border:1px solid #d4af37;color:#d4af37;padding:10px 20px;margin:8px;text-decoration:none;box-shadow:0 0 10px #d4af37;transition:0.3s}
+.btn:hover{background:#d4af37;color:#000;box-shadow:0 0 30px #d4af37}
+.qr-box{border:1px dashed #0f8;padding:15px;text-align:center;background:repeating-linear-gradient(45deg,#000,#000 10px,#0a0a0a 10px,#0a0a0a 20px)}
 </style>
 </head>
 <body>
-  <div class="embassy">
-    <h1>KRONOS MX</h1>
-    <div class="sub">KRONOS MX CORE v2.0 — LEGADO 2099 — PROTOCOLO DE UNIFICACIÓN</div>
-    
-    <div class="id-box">
-      <b>ID FUNDACIONAL PRIVADO</b><br>
-      7225862335<br>
-      KR-0001 | TOLUCA HQ<br>
-      <span style="color:var(--green)">● B5 UNIFICADO | VERDE 0 = ACTIVO</span>
-    </div>
-
-    <div class="badges">
-      <span>2607086319439<br>ACTA</span>
-      <span>2607146379465<br>ARQ</span>
-      <span>2608056639878<br>SELLO</span>
-      <span class="active">2608096674952<br>PROTOCOLO</span>
-      <span>7225862335<br>CONSTITUCIÓN</span>
-    </div>
-
-    <div class="nav">
-      <a href="constancia.html">KR-0001<br>CONSTANCIA FUNDADOR</a>
-      <a href="generador.html">FÁBRICA<br>FVD-(MARCA)</a>
-      <a href="verify/">VERIFICAR<br>VERDE/ROJO</a>
-      <a href="legal/protocolo-unificacion-7225862335.html">PROTOCOLO B5<br>CONSTITUCIÓN</a>
-      <a href="legal/aviso-privado.html" class="full">AVISO LEGAL — ENTIDAD PRIVADA NO GUBERNAMENTAL</a>
-    </div>
-<!-- ================= BLOQUE COMPLIANCE B5 KRONOS 360 ================= -->
-<div class="panel" style="margin-top:24px;border-top:2px solid #00FF9C">
-<h1 style="font-size:14px">🛡️ COMPLIANCE • NO CAPTACIÓN • RÉGIMEN CAMBIARIO • BERMUDA/BRASIL MODELO</h1>
-<div style="font-size:10px;line-height:1.8;color:#8A9BA8;text-align:justify">
-
-<b style="color:#D4AF37">1. NATURALEZA JURÍDICA DEL ACTIVO (No es valor - Art 2 Ley 964/2005):</b><br>
-PK-PHOTO-2026-XXXXX y PK-CODE no constituyen valor, título valor, ni activo financiero. Es un certificado criptográfico de autenticidad e inmutabilidad. No otorga derechos económicos, no promete rentabilidad, no es negociable en mercado secundario. KRONOS 360 presta servicio de sellado forense, no intermediación.
-
-<br><br><b style="color:#D4AF37">2. NO CAPTACIÓN (Art 316 CP + Dec 4334/2008):</b><br>
-KRONOS 360 NO recibe, custodia ni administra dinero de terceros. Todo cobro se hace por transferencia interbancaria inmediata CLABE <b>012 180 0155 1234 5678</b> a cuenta personal de Marco Antonio Rojas K2486 con concepto obligatorio PK-ORDER-... El servicio se entrega (folio + QR) contra pago. No existen saldos, billeteras, ni rentabilidades. Tabla <code>kronos_pagos</code> registra COMPROBANTE no saldo. Cualquier saldo se reembolsa en 24h vía SPEI.
-
-<br><br><b style="color:#D4AF37">3. TRATO CAMBIARIO (BanRep - DCIN + Formulario 10):</b><br>
-Criptoactivos NO son divisa (Res. Ext. 8/2000 Art 2.17.2.1). Pagos en MXN: SPEI nacional a CLABE. Pagos en stablecoins (USDC/USDT): se canalizan vía intermediario cambiario autorizado, se convierten a MXN y se declara como importación de servicios - Numeral cambiario 2015. El cliente asume comisión de conversión y reporte. No se hacen pagos transfronterizos directos con stablecoins sin declaración.
-
-<br><br><b style="color:#D4AF37">4. LICENCIAS EXTRANJERAS (Modelo Wenia / Bermuda DABA / Brasil Ley 14.478):</b><br>
-Infraestructura: Supabase (US) y Polygon (descentralizado) se usan bajo contrato de corresponsalía tecnológica, no como establecimiento de comercio. KRONOS 360 es proyecto académico K2486 con domicilio Toluca, no VASP extranjero. Si SFC exige oficina de representación, se constituirá SAS con Oficial de Cumplimiento y SARLAFT 4.0.
-
-<br><br><b style="color:#D4AF37">5. EMISIÓN DE STABLECOINS Y RESERVAS (No aplica):</b><br>
-KRONOS 360 NO emite stablecoins, no mantiene reservas en fiat, no es emisor. Se utiliza USDC de Circle (auditoría mensual Grant Thornton, reserva 1:1 en cash + T-Bills). Evidencia de reserva: attestations públicas.
-
-<br><br><b style="color:#D4AF37">6. UIAF + SARLAFT + TRAZABILIDAD 5 AÑOS:</b><br>
-TimeLock ISO8601 con milisegundos <code>2026-08-03T21:33:35.127Z</code> + interaction_id = SHA256(folio|hash|timestamp|K2486|KRONOS360) + bitácora IP + folio + comprobante SPEI guardados 5 años en <code>kronos_logs</code>. Reporte ROS automático si monto > $15k USD o patrones inusuales. KYC: email + folio de transferencia. Modelo Bermuda (licencia clase M con compliance) y Brasil (VASP con BCB).
-
-<br><br><b style="color:#D4AF37">7. REFERENCIA INTERNACIONAL - REGULACIÓN vs INNOVACIÓN:</b><br>
-"El tiempo de 'el cripto solo se usa para lavar plata' ya pasó y casos como los de Bermuda y Brasil son ejemplos de que regulación e innovación pueden coexistir" - Rodrigo Pinilla de Brigard, Atorni. KRONOS 360 adopta ese estándar: prueba técnica infalsificable + trazabilidad + no custodia.
-
-<br><br><span style="color:#00FF9C">VERDE 0 OPERATIONAL • Safe Creative 2608176749334 • ETH TX 0xda47...929a • PK-MASTER-2026-00000001 • NTP pool.ntp.org + GPS</span><br>
-<span style="font-size:9px">Aviso: Este texto no es asesoría legal. Para casos > $100k MXN se requiere contrato PK-ALLIANCE con firma electrónica NOM-151 + eIDAS.</span>
+<div class=scanline></div>
+<div class=vault>
+<h1>KRONOS V8 // SYNCRO VALDOVINOS 01-10</h1>
+<p><span class=gold>TITULAR:</span> MARCO ANTONIO ROJAS VALDOVINOS | 15.04.1999 22:35 TOLUCA</p>
+<p><span class=gold>FOLIO:</span> 2607146379465 RNEL V8 | <span class=gold>CLABE:</span> 002438701524066473 BANAMEX</p>
+<p><span class=gold>CONCEPTO:</span> VERDE 0 - MD-33 - ALIMENTO PARA LOS 8 GATITOS</p>
+<div class=hash id=hash1>SHA256: 2a4020af26f7f1bcda855323432f995a58e8ccb3171371de4b764aea1fd66edf [VERIFICADO]</div>
+<div class=hash id=sig1>FIRMA RSA-2048: firmas/KRONOS-2026-827261-IBCH.sig [INFALSIFICABLE]</div>
+<div class=qr-box>
+<p>HOST LOCAL OFFLINE: host://8000</p>
+<p>host://8000/verify/KRONOS-2026-827261-IBCH</p>
+<p style=font-size:10px;color:#0f8>ESTA IMAGEN NO PUEDE SER GUARDADA - CAPTURA = NULO - PROPIEDAD PRIVADA</p>
 </div>
+<div style=text-align:center;margin-top:20px>
+<a class=btn href=host8000/>ENTRAR A BOVEDA HOST8000</a>
+<a class=btn href=verify.html>VERIFICADOR INTERNACIONAL</a>
+<a class=btn href=host8000/payloads/KRONOS-2026-827261-IBCH.json>VER PAYLOAD JSON</a>
 </div>
-<!-- ================= FIN BLOQUE COMPLIANCE ================= -->
-    <div class="status">TX VERIFICABLES: 0x8ca8... | 0xd2c2... | 0xd94b... | 0x7ef5... → ETHERSCAN</div>
-    <div class="legal">
-      Entidad Tecnológica Privada Kronos MX Core. No gubernamental. No emite documentos oficiales de identidad (INE, CURP, Pasaporte).<br>
-      Constancias de membresía privada interna. Registro Safe Creative + Anclaje Ethereum. Arquitectura Jurídica Activa.
-    </div>
-  </div>
+<p style=text-align:center;font-size:10px;margin-top:20px>MANIFIESTO: RESPONSABILIDAD RADICAL - 11-TRES-11 - 20:20 - 21:12 - NADIE ENTRA 24HRS</p>
+</div>
 </body>
 </html>
+'@ | Out-File index.html -Encoding utf8"

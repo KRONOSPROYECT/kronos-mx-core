@@ -1,3 +1,20 @@
+powershell -Command "@'
+# KRONOS V8 - SYNCRO VALDOVINOS - 01 10
+**TITULAR:** MARCO ANTONIO ROJAS VALDOVINOS - 15.04.1999 22:35
+**FOLIO:** 2607146379465 RNEL V8 | **ID:** KRONOS-2026-827261-IBCH
+**CLABE:** 002438701524066473 BANAMEX | **MONTO:** $2,000 VERDE 0
+**HASH ORIGINAL:** 2a4020af26f7f1bcda855323432f995a58e8ccb3171371de4b764aea1fd66edf
+**HOST:** host://8000 | **GENESIS BLOCK:** 25692765
+**ESTADO:** VAULT 1 DE 1 - NADIE ENTRA 24HRS - ALIMENTO PARA LOS 8 GATITOS
+**MANIFIESTO:** RESPONSABILIDAD RADICAL - 11-TRES-11 - 20:20 - 21:12
+## Estructura antifalsificable
+- host8000/ = Bóveda privada offline
+- verify.html = Verificador internacional NOM-151 eIDAS ESIGN
+- payloads/ = Acta original JSON
+- firmas/ = Firma RSA-2048 + SHA256
+- auditoria_borrado/ = Registro de borrados
+'@" | Out-File README.md -Encoding utf8"
+
 # 🏛️ Proyecto del Ecosistema KRONOS
 
 ---

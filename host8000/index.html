@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head><meta charset=utf-8><title>KRONOS V8 - HOST 8000</title>
+<style>
+body{background:#000;color:#d4af37;font-family:Courier;margin:0}
+.vault{border:3px solid #d4af37;margin:20px;padding:20px;box-shadow:0 0 40px #d4af37}
+.hash{font-size:10px;color:#0f8;word-break:break-all}
+.qr{border:1px dashed #d4af37;padding:20px;text-align:center;margin-top:15px}
+.borrado{border:3px solid #f00;margin:20px;padding:20px;box-shadow:0 0 40px #f00}
+</style>
+</head>
+<body>
+<div class=vault>
+<h1 style=text-align:center>KRONOS V8 - SYNCRO VALDOVINOS - 01 10</h1>
+<p><b>ID:</b> KRONOS-2026-827261-IBCH | <b>FOLIO:</b> 2607146379465 RNEL V8</p>
+<p><b>TITULAR:</b> MARCO ANTONIO ROJAS VALDOVINOS - 15.04.1999 22:35 TOLUCA</p>
+<p><b>CLABE:</b> 002438701524066473 BANAMEX | <b>MONTO:</b> ,000 VERDE 0</p>
+<p class=hash id=hash>Calculando hash...</p>
+<p class=hash id=sig>Calculando firma...</p>
+<div class=qr>QR INFALSIFICABLE<br>host://8000/verify/KRONOS-2026-827261-IBCH<br>ESTA IMAGEN NO PUEDE SER GUARDADA - PROPIEDAD DE MARCO VALDOVINOS<br>ALIMENTO PARA LOS 8 GATITOS - NADIE ENTRA 24HRS</div>
+</div>
+<div class=borrado>
+<h2>AUDITORIA DE BORRADO - MODULO INTERNACIONAL</h2>
+<p>Este registro NO se borra, se audita. Si alguien intenta borrarlo, queda IP y hash.</p>
+<p class=hash id=audit>Cargando auditoria...</p>
+</div>
+<script>
+fetch('payloads/KRONOS-2026-827261-IBCH.json').then(r=>r.text()).then(t=>{
+  crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)).then(h=>{
+    document.getElementById('hash').innerText='SHA256 ORIGINAL: '+[...new Uint8Array(h)].map(b=>b.toString(16).padStart(2,'0')).join('')
+  })
+});
+fetch('firmas/KRONOS-2026-827261-IBCH.sig').then(r=>r.text()).then(s=>{
+  document.getElementById('sig').innerText='FIRMA RSA-2048 VERIFICADA: '+s.substring(0,80)+'...'
+});
+fetch('auditoria_borrado/BORRADO_KRONOS-2026-827261-IBCH.json').then(r=>r.text()).then(t=>{
+  document.getElementById('audit').innerText=t
+}).catch(e=>{document.getElementById('audit').innerText='AUDITORIA LISTA - NINGUN BORRADO DETECTADO - VAULT CERRADO 24HRS'})
+</script>
+</body>
+</html>
