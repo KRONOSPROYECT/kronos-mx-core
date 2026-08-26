@@ -1,10 +1,8 @@
-name: KRONOS-GUARDIAN SOBERANO
+﻿name: KRONOS-GUARDIAN SOBERANO
 on:
   schedule:
-    - cron: '0 * * * *' # Cada hora, hasta 2099
+    - cron: '0 9 * * *' # 1 vez al día 9am, no cada hora
   workflow_dispatch:
-  push:
-    branches: [main]
 
 jobs:
   guardian:
@@ -13,18 +11,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Custodia Genesis Block
         run: |
-          echo "🛡️ KRONOS MX - GUARDIAN ACTIVO"
-          echo "Bloque Génesis: 25692765"
-          echo "Sede: Toluca, Estado de México"
-          echo "HECHO EN MEXICO - Hasta 2099"
-          echo "Verificando integridad en Ethereum..."
+          echo "KRONOS MX - GUARDIAN ACTIVO"
+          echo "Bloque Genesis: 25692765"
+          echo "Sede: Toluca - HECHO EN MEXICO - Hasta 2099"
           BLOCK=25692765
           echo "{\"genesis\":\"$BLOCK\",\"status\":\"OPERATIVO\",\"timestamp\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"soberania\":\"HECHO EN MEXICO\",\"hq\":\"Toluca\",\"valid_until\":\"2099\"}" > status.json
           cat status.json
-      - name: Actualiza Sello
-        run: |
-          git config user.name "kronos-guardian"
-          git config user.email "guardian@kronos.mx"
-          git add status.json || true
-          git commit -m "🛡️ Guardian: Bloque 25692765 verificado - OPERATIVO - $(date)" || echo "Sin cambios"
-          git push || echo "Push protegido"
