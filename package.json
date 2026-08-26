@@ -1,1 +1,12 @@
-...
+﻿{
+  "name": "kronos-mx-core",
+  "version": "2.1.0",
+  "description": "KRONOS MX CORE ID 7225862335 - Toluca HQ - LEGADO 2099",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo B5 BUILD OK - Static HTML",
+    "start": "echo KRONOS VERDE 0"
+  },
+  "author": "Marco Antonio Rojas Valdovinos",
+  "license": "UNLICENSED"
+}
